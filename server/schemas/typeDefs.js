@@ -22,14 +22,15 @@ const typeDefs = gql`
     user: User
   }
   type Query {
-    categories: [Categories]
+    category: [Categories]
     toys(categories: ID, name: String): [Toys]
-    user: User
+    users: [User]
   }
   type Mutation {
-    addUser(username: String!, email: String!, password: String!): Auth
+    addUser(username: String!, email: String!, password: String!): User
     updateUser(username: String, email: String, password: String): User
     login(email: String!, password: String!): Auth
+    addToys(name: String!, description: String, image: String): Toys
   }
 `;
 
