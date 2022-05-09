@@ -6,21 +6,21 @@ const toySchema = new Schema({
   name: {
     type: String,
     required: true,
-    trim: true
+    trim: true,
   },
   description: {
-    type: String
+    type: String,
   },
   image: {
-    type: String
+    type: String,
   },
   category: {
     type: Schema.Types.ObjectId,
     ref: 'Category',
-    required: true
-  }
-})
+    required: true,
+  },
+});
 
-const Product = mongoose.model('Product', productSchema);
+const Toys = mongoose.model('Toys', toySchema);
 
-module.exports = Product;
+module.exports = Toys;
