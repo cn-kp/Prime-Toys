@@ -20,7 +20,11 @@ const userSchema = new Schema({
     required: true,
     minlength: 5
   },
-  orders: [Order.schema]
+  toys: {
+      type: Schema.Types.ObjectId,
+      ref: 'Toys',
+      required: false
+  },
 });
 
 // set up pre-save middleware to create password
