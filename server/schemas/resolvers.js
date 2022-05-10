@@ -7,11 +7,11 @@ const resolvers = {
     users: async () => {
       return await User.find();
     },
-    category: async () => {
+    categories: async () => {
       return await Category.find();
     },
     toys: async () => {
-      return await Toy.find();
+      return await Toys.find();
     },
   },
   Mutation: {
