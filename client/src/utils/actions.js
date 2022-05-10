@@ -1,0 +1,1 @@
+export const UPDATE_TOYS = "UPDATE_TOYS"
