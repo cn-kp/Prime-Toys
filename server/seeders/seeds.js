@@ -15,25 +15,17 @@ db.once('open', async () => {
     await Category.create(categorySeeds);
     console.log('categories seeded!');
 
-    for (let i = 0; i < toySeeds.length; i++) {
-      const categoryName = toySeeds[i].category;
-      var id = await Category.findOne({ category: categoryName });
-    }
+    const categories = await Category.find();
 
-    const categoryId = id._id;
-    const categoryName = id.name;
+    toySeeds.forEach((toy) => {
+      const category = categories.find((cat) => {
+          return cat.name === toy.category
+      })
 
-    const toyArray = toySeeds;
-
-    updatedToySeeds = await toyArray.map((category) => {
-      let temp = Object.assign({}, category);
-      if (temp.category === categoryName) {
-        temp.category = categoryId;
-      }
-      return temp;
+      toy.category = category._id
     });
 
-    Toys.create(updatedToySeeds);
+    await Toys.create(toySeeds);
 
     console.log('toys seeded!');
   } catch (err) {

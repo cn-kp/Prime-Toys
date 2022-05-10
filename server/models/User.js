@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const Toys = require('./Toys');
+const Toy = require('./Toy');
 
 const { Schema } = mongoose;
 const bcrypt = require('bcrypt');
@@ -24,7 +24,7 @@ const userSchema = new Schema({
   listings: [
     {
       type: Schema.Types.ObjectId,
-      ref: 'Toys',
+      ref: 'Toy',
       required: true,
     },
   ],
