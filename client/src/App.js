@@ -4,6 +4,7 @@ import "./App.scss";
 import React from "react";
 import Home from "./components/pages/home";
 import Navbar from "./components/navbar/navbar";
+import Profile from "./components/pages/profile";
 import { ApolloClient, ApolloProvider } from "@apollo/client";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
@@ -14,7 +15,7 @@ function App() {
         <Navbar />
           <Routes>
           <Route path="/" element={<Home/>} />
-          <Route path="/profile" element={"profile-page"} />
+          <Route path="/profile" element={<Profile />} />
           <Route path="/Listing" element={"listing-page"} />
           <Route path="/login" element={<LoginForm />} />
         </Routes>
