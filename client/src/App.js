@@ -1,12 +1,25 @@
-import Login from './components/pages/login'
-import './App.scss';
+import LoginForm from "./components/pages/login";
+import "./reset.scss";
+import "./App.scss";
+import React from "react";
+import Home from "./components/pages/home";
+import Navbar from "./components/navbar/navbar";
+import { ApolloClient, ApolloProvider } from "@apollo/client";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 function App() {
   return (
-    <div className="App">
-    <h1>Prime Toys</h1>
-    <Login />
-    </div>
+    <Router>
+      <div className="App">
+        <Navbar />
+          <Routes>
+          <Route path="/" element={<Home/>} />
+          <Route path="/profile" element={"profile-page"} />
+          <Route path="/Listing" element={"listing-page"} />
+          <Route path="/login" element={<LoginForm />} />
+        </Routes>
+      </div>
+    </Router>
   );
 }
 
