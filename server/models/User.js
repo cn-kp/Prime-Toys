@@ -1,5 +1,4 @@
 const mongoose = require('mongoose');
-const Toy = require('./Toy');
 
 const { Schema } = mongoose;
 const bcrypt = require('bcrypt');
