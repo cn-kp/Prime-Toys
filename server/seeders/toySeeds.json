@@ -1,0 +1,16 @@
+[
+  {
+    "name": "Marvel Spider-Man Titan Hero 12 inch Action Collectible Figure",
+    "description":
+      "Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.",
+    "image": "spiderman.jpg",
+    "category": "categories[0]._id"
+  },
+  {
+    "name": "Marvel Legends Series - Avengers: Infinity Saga - Thor Figure",
+    "description":
+      "Praesent sed lacinia mauris. Nulla congue nibh magna, at feugiat nunc scelerisque quis. Donec iaculis rutrum vulputate. Suspendisse lectus sem, vulputate ac lectus sed, placerat consequat dui.",
+    "image": "canned-coffee.jpg",
+    "category": "categories[0]._id"
+  }
+]
