@@ -1,0 +1,50 @@
+@import "../../variables.scss";
+.navbar-container{
+    margin:auto
+}
+.navbar{
+    display: flex;
+    position:fixed;
+    left:0%;
+    top:0rem;
+    font-size: 1rem;
+    font-family: "sans-serif";
+    justify-content: space-around;
+    width:100%;
+    padding: 1rem 0;
+    z-index: 20;
+    border: 2px solid $blue;
+
+    div{
+        background-color: $red;
+    }
+//     background-color: linear-gradient(to right, $copper, $red)
+    ul {
+        display: flex;
+        justify-content: space-between;
+        list-style: none;
+        // padding: 1rem;
+     li   {
+            list-style: none;
+            display:inline-block;
+            border: 1px dashed white;
+            color: black
+        }
+    }
+
+}
+
+
+@media screen and (min-width:800px) {
+    .navbar{
+        font-size: 1.5rem;
+        justify-content: space-around;
+        // background-color: linear-gradient(to right,$copper,$red)
+    }
+}
+
+li:hover{
+    text-decoration: underline;
+        color: $purple;
+        background:white
+}

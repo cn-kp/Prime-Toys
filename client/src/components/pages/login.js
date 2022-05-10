@@ -1,122 +1,124 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import "./login.scss";
 
+export default function LoginForm() {
+  const [activePanel, setActivePanel] = useState(false)
+  // const [hidePassword,setHidePassword] = useState("password")
 
-export default function Login(){
     return(
-        <div id="container">
-      <div class="form_container sign_in">
+    <div id="container" className={activePanel ? "right-panel-active" : ""}>
+      <div className="form_container sign_in">
         <form action="" method="POST">
-          <h1 class="beige_text">Log In To Your Account</h1>
+          <h1 className="beige_text">Log In To Your Account</h1>
 
-          <div class="social_icons">
-            <p class="login-options">Or login with Facebook or Google</p>
+          <div className="social_icons">
+            <p className="login-options">Or login with Facebook or Google</p>
             <a href="#">
-              <i class="fa-brands fa-facebook-f"></i>
+              <i className="fa-brands fa-facebook-f"></i>
             </a>
             <a href="#">
-              <i class="fa-brands fa-google"></i>
+              <i className="fa-brands fa-google"></i>
             </a>
           </div>
-          <h6 class="beige_text">Or enter your login details</h6>
-          <div class="email icon">
+          <h6 className="beige_text">Or enter your login details</h6>
+          <div className="email icon">
             <input
               type="text"
               id="email"
               name="email"
               placeholder="Email Address"
-              value=""
+              defaultValue=""
               required
-            /><i class="fa-solid fa-envelope"></i>
+            /><i className="fa-solid fa-envelope"></i>
           </div>
-          <div class="password icon">
+          <div className="password icon">
             <input
               type="password"
               id="password_up"
               name="password"
               placeholder="Password"
-              value=""
+              defaultValue=""
               required
             />
-            <i class="fa-solid fa-lock"></i>
-            <i class="show fas fa-eye-slash" onclick="showPassword()"></i>
+            <i className="fa-solid fa-lock"></i>
+            <i className="show fas fa-eye-slash"></i>
           </div>
-          <div class="remember beige_text">
+          <div className="remember beige_text">
             <input type="checkbox" id="remember"/>
             <h5>Remember me</h5>
           </div>
-          <div class="submit">
+          <div className="submit">
             <button
               id="login-option_btn"
               type="submit"
-              class="overlay_button"
+              className="overlay_button"
             >
               Log In
             </button>
           </div>
         </form>
       </div>
-      <div class="form_container sign_up">
+      <div className="form_container sign_up">
         <form action="" method="POST">
-          <h1 class="beige_text">Create an Account</h1>
-          <div class="social_icons">
-            <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
-            <a href="#"><i class="fa-brands fa-google"></i></a>
+          <h1 className="beige_text">Create an Account</h1>
+          <div className="social_icons">
+            <a href="#"><i className="fa-brands fa-facebook-f"></i></a>
+            <a href="#"><i className="fa-brands fa-google"></i></a>
           </div>
-          <h6 class="beige_text">Or enter your personal details</h6>
-          <div class="user icon">
+          <h6 className="beige_text">Or enter your personal details</h6>
+          <div className="user icon">
             <input
               type="text"
               id="user"
               name="user"
               placeholder="Username"
               required
-            /><i class="fa-solid fa-user"></i>
+            /><i className="fa-solid fa-user"></i>
           </div>
-          <div class="email icon">
+          <div className="email icon">
             <input
               type="text"
               id="email"
               name="email"
               placeholder="Email address"
               required
-            /><i class="fa-solid fa-envelope"></i>
+            /><i className="fa-solid fa-envelope"></i>
           </div>
-          <div class="password icon">
+          <div className="password icon">
             <input
               type="password"
               id="password"
               name="password"
               placeholder="Password"
               required
-            /><i class="fa-solid fa-lock"></i
-            ><i class="show fas fa-eye-slash" onclick="showPassword()"></i>
+            /><i className="fa-solid fa-lock"></i
+            ><i className="show fas fa-eye-slash"></i>
           </div>
-          <div class="submit">
+          <div className="submit">
             <button
               id="btnin"
               name="signup"
               type="submit"
-              class="overlay_button"
+              className="overlay_button"
             >
               Sign up
             </button>
           </div>
         </form>
       </div>
-      <div class="overlay_container">
-        <div class="overlay">
-          <div class="overlay_panel overlay_left">
+      <div className="overlay_container">
+        <div className="overlay">
+          <div className="overlay_panel overlay_left">
             <h1>Welcome Back!</h1>
             <p>Please login to your Prime Toys Account to access our website</p>
-            <button id="signIn" type="button" class="overlay_button">
+            <button id="signIn" type="button" className="overlay_button" onClick={()=>(setActivePanel(!activePanel))}>
               Log In
             </button>
           </div>
-          <div class="overlay_panel overlay_right">
+          <div className="overlay_panel overlay_right">
             <h1>Don't Have an Account?</h1>
             <p>Click Sign Up to create a new Prime Toys account</p>
-            <button id="signUp" type="button" class="overlay_button">
+            <button id="signUp" type="button" className="overlay_button" onClick={()=>(setActivePanel(!activePanel))}>
               Sign Up
             </button>
           </div>
@@ -124,4 +126,4 @@ export default function Login(){
       </div>
     </div>
     );
-}
+};
