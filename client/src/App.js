@@ -42,7 +42,6 @@ const client = new ApolloClient({
   cache: new InMemoryCache(),
 });
 
-
 function App() {
   return (
     <ApolloProvider client={client}>
@@ -51,7 +50,7 @@ function App() {
         <Navbar />
           <Routes>
           <Route path="/" element={<Home/>} />
-          <Route path="/profile" element={"profile-page"} />
+          <Route path="/profile" element={<Profile />} />
           <Route path="/Listing" element={"listing-page"} />
           <Route path="/login" element={<LoginForm />} />
         </Routes>
