@@ -1,5 +1,5 @@
 const db = require('./connection');
-const { User, Toys, Category } = require('../models');
+const { User, Toy, Category } = require('../models');
 
 db.once('open', async () => {
   await Category.deleteMany();
@@ -22,9 +22,9 @@ db.once('open', async () => {
     '======================== Categories seeded! ========================'
   );
 
-  await Toys.deleteMany();
+  await Toy.deleteMany();
 
-  const toys = await Toys.insertMany([
+  const toys = await Toy.insertMany([
     {
       name: `Marvel Spider-Man Titan Hero 12" Action Collectible Figure`,
       description:
@@ -113,7 +113,7 @@ db.once('open', async () => {
     },
   ]);
 
-  console.log('======================== Toys seeded! ========================');
+  console.log('======================== Toy seeded! ========================');
 
   await User.deleteMany();
 

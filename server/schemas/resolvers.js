@@ -1,5 +1,5 @@
 const { AuthenticationError } = require('apollo-server-express');
-const { User, Toys, Category } = require('../models');
+const { User, Toy, Category } = require('../models');
 const { signToken } = require('../utils/auth');
 
 const resolvers = {
@@ -11,16 +11,16 @@ const resolvers = {
       return await Category.find();
     },
     toys: async () => {
-      return await Toys.find();
+      return await Toy.find();
     },
   },
   Mutation: {
     addUser: async (parent, { username, email, password }) => {
       const user = await User.create({ username, email, password });
-      return user;
-      //  Disabling this part of mutation until JWT authentication is setup.
-      //   const token = signToken(user);
-      //   return { token, user };
+      // return user;
+      // //  Disabling this part of mutation until JWT authentication is setup.
+        const token = signToken(user);
+        return { token, user };
     },
     login: async (parent, { email, password }) => {
       const user = await User.findOne({ email });
