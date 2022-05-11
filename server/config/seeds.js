@@ -36,7 +36,7 @@ db.once('open', async () => {
       name: 'Marvel Legends Series - Avengers: Infinity Saga - Thor Figure',
       description:
         'Praesent sed lacinia mauris. Nulla congue nibh magna, at feugiat nunc scelerisque quis. Donec iaculis rutrum vulputate. Suspendisse lectus sem, vulputate ac lectus sed, placerat consequat dui.',
-      image: 'canned-coffee.jpg',
+      image: 'thor.jpg',
       category: categories[0]._id,
       price: 1.99,
       quantity: 500,

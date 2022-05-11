@@ -1,15 +1,12 @@
 import {gql} from '@apollo/client'
 
 export const QUERY_ALL_TOYS = gql`
-    {
-        toy {
+    query getToys {
+        toys {
             _id
             name
             description
             image
-            category {
-                name
-            }
         }
     }
 `

@@ -13,10 +13,13 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "./reset.scss";
 import "./App.scss";
 
-// Pages and Components
-import Home from "./components/pages/home";
-import LoginForm from "./components/pages/login";
-import Navbar from "./components/navbar/navbar";
+// Pages
+import Home from "./pages/home";
+import LoginForm from "./pages/login";
+import Profile from "./pages/profile"
+
+// Components
+import Navbar from "./components/navbar/navbar"
 
 // Construct our main GraphQL API endpoint
 const httpLink = createHttpLink({
@@ -48,12 +51,14 @@ function App() {
     <Router>
       <div className="App">
         <Navbar />
-          <Routes>
+        <main>
+        <Routes>
           <Route path="/" element={<Home/>} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/Listing" element={"listing-page"} />
           <Route path="/login" element={<LoginForm />} />
         </Routes>
+        </main>
       </div>
     </Router>
     </ApolloProvider>

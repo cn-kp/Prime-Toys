@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useMutation } from "@apollo/client";
-import { LOGIN_USER } from "../../utils/mutations";
+import { LOGIN_USER } from "../utils/mutations";
 import "./login.scss";
 
-import Auth from "../../utils/auth";
+import Auth from "../utils/auth";
 
 const LoginForm = (props) => {
   // Login component animation
