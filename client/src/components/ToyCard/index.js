@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from "react-router-dom"
 
-import './toyCards.scss'
+import './ToyCard.scss'
 
 export default function ToyCard(card){ 
 
@@ -14,20 +14,23 @@ export default function ToyCard(card){
     } = card
     
     return(
-        <div className="main-container">
-            <div className="toy-container">
+        <div className="card-container">
+            <div className="card">
                 <div className="image-container">
                    <img
                         alt={name}
                         src={`/images/${image}`}
                     />
                 </div>
+                <div className="card-body">
                 <p className="toy-name">{name}</p>
                 <div className="toy-product">
                     <p>{description}</p>
+                    <p>{category}</p>
                 </div>
                 <button className="contact-seller">Email seller</button>
-            </div>
+                </div>
+                </div>
         </div>
     )
 }

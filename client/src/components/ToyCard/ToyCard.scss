@@ -1,0 +1,20 @@
+@import "../../variables.scss";
+
+img {
+  width: 100%;
+}
+
+.card-container {
+  max-width: 400px;
+  height: 500px;
+  margin: 30px auto;
+
+  .card {
+    border-radius: 25px;
+    box-shadow: $box-shadow;
+
+    &:hover {
+      border-color: $red;
+    }
+  }
+}

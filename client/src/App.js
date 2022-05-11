@@ -51,12 +51,14 @@ function App() {
     <Router>
       <div className="App">
         <Navbar />
-          <Routes>
+        <main>
+        <Routes>
           <Route path="/" element={<Home/>} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/Listing" element={"listing-page"} />
           <Route path="/login" element={<LoginForm />} />
         </Routes>
+        </main>
       </div>
     </Router>
     </ApolloProvider>
