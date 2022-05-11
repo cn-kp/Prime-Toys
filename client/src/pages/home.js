@@ -1,6 +1,6 @@
 import React from 'react';
-import ToyItems from '../toyCards/toyCards';
-import HomeHeader from '../homeHeader/homeHeader';
+import ToyItems from '../components/toyCards/toyCards';
+import HomeHeader from '../components/homeHeader/homeHeader';
 
 export default function Home(){
     return (
