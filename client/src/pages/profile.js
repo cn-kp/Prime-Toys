@@ -5,7 +5,7 @@ export default function Profile() {
   return (
     <div className="profile-container">
       <div className="profile-background-image">
-        <img src="https://placehold.it/"></img>
+        <img src="https://placehold.it/" alt="placeholder"></img>
       </div>
       <div className="userName">username</div>
       <div>
