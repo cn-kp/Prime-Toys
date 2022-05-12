@@ -1,13 +1,10 @@
 import React from "react";
 import {useQuery} from "@apollo/client"
 import "./profileToyCards.scss";
-import { QUERY_USER_TOYS} from "../../utils/queries"
 
-export default function Profile(){
+export default function ProfileToyCards(card){
 
-  const {loading, data} = useQuery(QUERY_USER_TOYS);
-
-  const userToys = data?.name || [];
+    const {_name ,description} = card
 
     return(
       <div className="toy-user-listing">
@@ -20,7 +17,7 @@ export default function Profile(){
         </div>
         <h2 className="toy-title">toy title/name</h2>
         <p className="toy-description"> enter toy description here</p>
-        <a href="#" className="btn contact-user"></a>
+        {/* <a href="#" className="btn contact-user"></a> */}
         <div className="listing-date">
           <span>created on:</span>
           <div>

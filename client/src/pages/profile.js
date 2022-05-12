@@ -11,8 +11,7 @@ export default function Profile() {
 
   const { loading, data } = useQuery(QUERY_USER_TOYS);
 
-  const userToys = data?.name || [];  
-
+  const userToys = data?.toys || [];  
 
   return (
     <div className="profile-container">
@@ -20,8 +19,6 @@ export default function Profile() {
         <div className="user-cards">
           {userToys.map((toy)=> (
             <ProfileToyCards 
-            key={toy._id}
-            _id={toy._id}
             name={toy.name}
             description={toy.description}
             image={toy.image}
