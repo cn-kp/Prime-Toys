@@ -5,7 +5,7 @@ import "./navbar.scss";
 
 export default function Navbar(){
     return(
-        <div className="navbar-container"> 
+
             <nav>
                 <ul className="navbar">
                 <div className="title-container">
@@ -17,6 +17,6 @@ export default function Navbar(){
                     <li><Link to ="/login">Login</Link></li>
                 </ul>
             </nav>
-        </div>
+
     )
 }

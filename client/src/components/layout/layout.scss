@@ -1,35 +1,35 @@
-@import "../../variables.scss";
+// @import "../../variables.scss";
 
-.layout-container{
-    display:grid;
-    height:100vh;
-    grid-template-columns: 0.6fr 1fr 1fr 1fr;
-    grid-template-rows: 1fr 1fr 1fr 1fr;
-    grid-template-areas:
-        "navbar navbar navbar navbar"
-        "sidebar main main main"
-        "sidebar toy-listings toy-listings toy-listings"
-        "footer footer footer footer";
-        grid-gap:0.2rem;
+// .layout-container{
+//     display:grid;
+//     height:100vh;
+//     grid-template-columns: 0.6fr 1fr 1fr 1fr;
+//     grid-template-rows: 1fr 1fr 1fr 1fr;
+//     grid-template-areas:
+//         "navbar navbar navbar navbar"
+//         "sidebar main main main"
+//         "sidebar toy-listings toy-listings toy-listings"
+//         "footer footer footer footer";
+//         grid-gap:0.2rem;
         
-    nav {
-        grid-area:navbar;
-    }
-    main{
-        grid-area:main;
-    }
-    .sidebar{
-        grid-area:sidebar;
-        background-image: linear-gradient(to bottom,$teal,$gold);
-    }
-    .toy-listings{
-        grid-area:toy-listings;
-    }
-    .extra-content{
-        grid-area: extra-content;
-    }
-    footer{
-        grid-area:footer;
-    }
+//     nav {
+//         grid-area:navbar;
+//     }
+//     main{
+//         grid-area:main;
+//     }
+//     .sidebar{
+//         grid-area:sidebar;
+//         background-image: linear-gradient(to bottom,$teal,$gold);
+//     }
+//     .toy-listings{
+//         grid-area:toy-listings;
+//     }
+//     .extra-content{
+//         grid-area: extra-content;
+//     }
+//     footer{
+//         grid-area:footer;
+//     }
 
-}
+// }

@@ -10,8 +10,20 @@ const resolvers = {
     categories: async () => {
       return await Category.find();
     },
-    toys: async () => {
-      return await Toy.find();
+    toys: async (parent, { category, name }) => {
+      const params = {}
+
+      if (category) {
+        params.category = category
+      }
+
+      if (name) {
+        params.name = {
+          $regex: name
+        }
+      }
+
+      return await Toy.find(params).populate('category');
     },
   },
   Mutation: {

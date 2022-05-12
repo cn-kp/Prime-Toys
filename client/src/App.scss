@@ -1,3 +1,39 @@
-main {
-  margin-top: 8em;
+@import './variables.scss';
+
+body {
+  font-size: 16px;
+}
+
+.grid{
+  display:grid;
+  height:100%;
+  grid-template-columns: 1fr 8fr 1fr;
+  grid-template-rows: 1fr 8fr 1fr;
+  grid-template-areas:
+      "navbar navbar navbar"
+      "main main main"
+      "footer footer footer";
+      grid-gap: 1rem;
+      
+  nav {
+      grid-area:navbar;
+      margin-bottom: 1em;
+  }
+  main{
+      grid-area:main;
+  }
+  .sidebar{
+      grid-area:sidebar;
+      background-image: linear-gradient(to bottom,$teal,$gold);
+  }
+  .toy-listings{
+      grid-area:toy-listings;
+  }
+  .extra-content{
+      grid-area: extra-content;
+  }
+  footer{
+      grid-area:footer;
+  }
+
 }

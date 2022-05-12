@@ -7,6 +7,9 @@ export const QUERY_ALL_TOYS = gql`
             name
             description
             image
+            category {
+                name
+            }
         }
     }
 `
