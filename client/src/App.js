@@ -50,10 +50,10 @@ function App() {
   return (
     <ApolloProvider client={client}>
     <Router>
-      <div className="grid">
-        <nav>
+      <div className="wrapper">
+        
         <Navbar />
-        </nav>
+
         <main>
         <Routes>
           <Route path="/" element={<Home/>} />
@@ -62,6 +62,7 @@ function App() {
           <Route path="/login" element={<LoginForm />} />
         </Routes>
         </main>
+        <footer>This is a footer</footer>
       </div>
     </Router>
     </ApolloProvider>
