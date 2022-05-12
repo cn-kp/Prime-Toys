@@ -14,7 +14,7 @@ const LoginForm = (props) => {
   const [formState, setFormState] = useState({ email: "", password: "" });
   const [login, { error, data }] = useMutation(LOGIN_USER);
 
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -24,7 +24,6 @@ const LoginForm = (props) => {
       [name]: value,
     });
   };
-
 
   // submit form
   const handleFormSubmit = async (event) => {
@@ -36,14 +35,19 @@ const LoginForm = (props) => {
       });
 
       Auth.login(data.login.token);
-      navigate("/profile", { replace: true});
+      navigate("/profile", { replace: true });
     } catch (err) {
       console.error(err);
     }
   };
 
   return (
-    <div id="container" className={activePanel ? "right-panel-active" : ""}>
+    <div className="wrapper--login">
+    <div
+      className={
+        activePanel ? "container--login--right-panel-active" : "container--login"
+      }
+    >
       <div className="form_container sign_in">
         {data ? (
           <p>
@@ -189,6 +193,7 @@ const LoginForm = (props) => {
           </div>
         </div>
       </div>
+    </div>
     </div>
   );
 };

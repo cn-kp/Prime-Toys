@@ -7,19 +7,19 @@ export default function ToyCard(card) {
   const { _id, name, description, image, category } = card;
 
   return (
-    <div className="card-container">
       <div className="card">
-        <div className="image-container">
+        <div className="image--container">
           <img alt={name} src={`/images/${image}`} />
         </div>
-        <div className="card-body">
+        <div className="card--body">
+          <div className="card--text">
           <p className="toy-name">{name}</p>
-          <div className="toy-product">
-            <p>{category}</p>
+          <p>{category}</p>
           </div>
-          <button className="contact-seller">Email seller</button>
+          <div className="card--link">
+          <button className="contact--seller">Email seller</button>
+          </div>
         </div>
       </div>
-    </div>
   );
 }

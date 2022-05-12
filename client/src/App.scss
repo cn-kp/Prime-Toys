@@ -1,46 +1,53 @@
-@import './variables.scss';
+@import "./variables.scss";
 
 body {
   font-size: 16px;
 }
 
 footer {
-    display: flex;
-    justify-content: center;
-    font-size: 25px;
+  display: flex;
+  justify-content: center;
+  font-size: 25px;
 }
 
 a {
+  text-decoration: none;
 
-    text-decoration: none;
+  &:visited {
+    color: rgb(35, 35, 35);
+  }
+}
 
-    &:visited {
-        color: rgb(35, 35, 35);
-        
+.container {
+  width: 100%;
+  padding: 0 1em;
+}
+
+.wrapper {
+  display: grid;
+  grid-template-columns: repeat(12, [col-start] 1fr);
+  gap: 20px;
+
+  > * {
+    grid-column: col-start / span 12;
+  }
+
+  @media (min-width: 500px) {
+    nav {
+      grid-column: col-start / span 12;
+      grid-row: 1 / 4;
     }
+    main {
+      grid-column: col-start / span 12;
+      grid-row: span 2;
+    }
+
+    footer {
+      grid: col-start 4 / span 12;
+    }
+  }
+
+  @media (min-width: 700px) {
+
+  }
 }
-
-.wrapper{
-  display:grid;
-  height:100%;
-  grid-template-areas:
-      "nav"
-      "main"
-      "footer";
-      grid-gap: 1rem;
-
-      
-  nav {
-      grid-area: nav;
-      margin-bottom: 1em;
-  }
-  main {
-      grid-area: main;
-  }
-
-  footer {
-      grid-area: footer;
-  }
-
-}
-

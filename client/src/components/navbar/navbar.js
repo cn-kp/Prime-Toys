@@ -11,7 +11,7 @@ export default function Navbar(){
                 <div className="title-container">
                     <h1 className="title">Prime Toys</h1>
                 </div>
-                <ul>
+                <ul className="nav--items">
                     <li><Link to ="/">Home</Link></li>
                     <li><Link to ="/profile">Profile</Link></li>
                     <li><Link to ="/listings">Listings</Link></li>

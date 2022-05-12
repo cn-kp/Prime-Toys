@@ -2,7 +2,7 @@
 
 .navbar{
     display: flex;
-    font-size: 1rem;
+    font-size: 0.6em;
     font-family: "sans-serif";
     padding: 1rem 0;
     z-index: 1;
@@ -14,10 +14,12 @@
         border-radius: 5px;
     }
 //     background-color: linear-gradient(to right, $copper, $red)
-    ul {
+    .nav--items {
         display: flex;
         justify-content: space-between;
         list-style: none;
+        margin: auto 0;
+        margin-left: auto;
         
      li   {
             display:inline-block;
@@ -25,15 +27,19 @@
             color: black;
             vertical-align: middle;
             padding-right: 0.8em;
+
+            a {
+                font-size: 1.5em;
+            }
         }
     }
 
 }
 
 
-@media screen and (min-width:800px) {
+@media screen and (min-width:600px) {
     .navbar{
-        font-size: 1.5rem;
+        font-size: 1em;
         justify-content: space-around;
         // background-color: linear-gradient(to right,$copper,$red)
     }
