@@ -20,7 +20,7 @@ import Profile from "./pages/profile"
 
 // Components
 import Navbar from "./components/navbar/navbar"
-import Layout from "./components/layout/layout"
+// import Layout from "./components/layout/layout"
 
 // Construct our main GraphQL API endpoint
 const httpLink = createHttpLink({
@@ -50,8 +50,10 @@ function App() {
   return (
     <ApolloProvider client={client}>
     <Router>
-      <div className="App">
-        <Layout />
+      <div className="wrapper">
+        
+        <Navbar />
+
         <main>
         <Routes>
           <Route path="/" element={<Home/>} />
@@ -60,6 +62,7 @@ function App() {
           <Route path="/login" element={<LoginForm />} />
         </Routes>
         </main>
+        <footer>This is a footer</footer>
       </div>
     </Router>
     </ApolloProvider>

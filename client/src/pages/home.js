@@ -11,9 +11,16 @@ import { QUERY_ALL_TOYS } from '../utils/queries';
 export default function Home(){
 
     const { loading, data } = useQuery(QUERY_ALL_TOYS);
+    let toys;
 
     //If there are no toys, return empty array
-    const toys = data?.toys || [];
+    if (data) {
+        toys = data.toys
+    } else {
+        toys = [];
+    }
+
+    
 
     return (
         <>
@@ -29,7 +36,7 @@ export default function Home(){
                 name={toy.name}
                 description={toy.description}
                 image={toy.image}
-                category={toy.category}
+                category={toy.category.name}
                 />
             ))}
             </div>

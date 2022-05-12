@@ -10,6 +10,7 @@ const typeDefs = gql`
     name: String
     description: String
     image: String
+    category: Category
   }
   type User {
     _id: ID
@@ -23,7 +24,7 @@ const typeDefs = gql`
   }
   type Query {
     categories: [Category]
-    toys: [Toy]
+    toys(category: ID, name: String): [Toy]
     users: [User]
   }
   type Mutation {

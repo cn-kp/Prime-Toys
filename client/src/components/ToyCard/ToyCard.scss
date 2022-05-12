@@ -5,16 +5,12 @@ img {
 }
 
 .card-container {
-  max-width: 400px;
-  height: 500px;
-  margin: 30px auto;
+  max-width: 200px;
+  padding: 1em;
+  border: 3px solid red;
 
-  .card {
-    border-radius: 25px;
-    box-shadow: $box-shadow;
-
-    &:hover {
-      border-color: $red;
-    }
+  &:hover {
+    border: 5px solid red;
   }
+
 }

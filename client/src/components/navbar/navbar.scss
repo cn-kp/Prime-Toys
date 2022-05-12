@@ -1,34 +1,30 @@
 @import "../../variables.scss";
-.navbar-container{
-    margin:auto
-}
+
 .navbar{
     display: flex;
-    position:fixed;
-    left:0%;
-    top:0rem;
     font-size: 1rem;
     font-family: "sans-serif";
-    justify-content: space-around;
-    width:100%;
     padding: 1rem 0;
-    z-index: 20;
+    z-index: 1;
     border: 2px solid $blue;
 
     div{
         background-color: $red;
+        padding: 0.5rem;
+        border-radius: 5px;
     }
 //     background-color: linear-gradient(to right, $copper, $red)
     ul {
         display: flex;
         justify-content: space-between;
         list-style: none;
-        // padding: 1rem;
+        
      li   {
-            list-style: none;
             display:inline-block;
             border: 1px dashed white;
-            color: black
+            color: black;
+            vertical-align: middle;
+            padding-right: 0.8em;
         }
     }
 
