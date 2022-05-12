@@ -6,4 +6,11 @@ body {
   font-family: "Helvetica", sans-serif;
   overflow-y: hidden;
   margin: auto;
+  min-height: 100vh;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
 }

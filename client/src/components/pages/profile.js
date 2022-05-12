@@ -1,5 +1,6 @@
 import React from "react";
 import "./profile.scss";
+import ProfileToyCards from "../profileToyCards/profileToyCards"
 
 export default function Profile() {
   return (
@@ -11,7 +12,7 @@ export default function Profile() {
       <div>
         <button className="add-listing-btn">Add a listing</button>
       </div>
-      <div className="user-listings">{/* import user listing cards */}</div>
+      <div className="user-listings"><ProfileToyCards /></div>
     </div>
   );
 }

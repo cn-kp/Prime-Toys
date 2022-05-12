@@ -17,6 +17,7 @@ import "./App.scss";
 import Home from "./components/pages/home";
 import LoginForm from "./components/pages/login";
 import Navbar from "./components/navbar/navbar";
+import Profile from "./components/pages/profile";
 
 // Construct our main GraphQL API endpoint
 const httpLink = createHttpLink({
