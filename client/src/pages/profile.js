@@ -1,7 +1,7 @@
 import React from "react";
 import { useQuery } from '@apollo/client'
 
-import ToyCard from '../components/ToyCard'
+import ProfileToyCards from '../components/profileToyCards/profileToyCards'
 
 import "./profile.scss";
 
@@ -11,11 +11,29 @@ export default function Profile() {
 
   const { loading, data } = useQuery(QUERY_USER_TOYS);
 
-  const toys = data?.name || [];  
+  const userToys = data?.name || [];  
 
 
   return (
     <div className="profile-container">
+      {userToys.length ? (
+        <div className="user-cards">
+          {userToys.map((toy)=> (
+            <ProfileToyCards 
+            key={toy._id}
+            _id={toy._id}
+            name={toy.name}
+            description={toy.description}
+            image={toy.image}
+            category={toy.category}/>
+
+          ))}
+          </div>
+      ) : (
+        <div>loading </div>
+      )
+    }
+      {/* <ProfileToyCards />
       <div className="profile-background-image">
         <img src="https://placehold.it/" alt="placeholder"></img>
       </div>
@@ -28,7 +46,7 @@ export default function Profile() {
      ) : (
        <div>Toys cards should be loading here</div>
      )
-    }
+    } */}
     </div>
   );
 }
