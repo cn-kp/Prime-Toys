@@ -1,0 +1,33 @@
+@import "../variables.scss";
+
+// .container {
+//   &--card {
+//     display: grid;
+//     grid-template-columns: 50% 50%;
+//     gap: 10px;
+//   }
+// }
+
+.container {
+  &--card {
+    margin: 2em;
+  display: grid;
+  gap: 20px;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+
+  @media (min-width: 980px) {
+    min-height: 70vh;
+  }
+  }
+}
+.listings {
+  
+  
+}
+
+.wrapper {
+  &--listings {
+    padding-left: 1em;
+    padding-right: 1em;
+  }
+}

@@ -2,15 +2,32 @@
 
 img {
   width: 100%;
+  overflow: hidden;
 }
 
-.card-container {
-  max-width: 200px;
-  padding: 1em;
-  border: 3px solid red;
+.card {
+    box-shadow: $box-shadow;
+    padding: 0.74em;
+
 
   &:hover {
-    border: 5px solid red;
+    transform: scale(102%);
+    transition: all 0.2s ease-out;
+  }
+
+  .card--body {
+    padding: 0 0.8em;
+    width: 100%;
+
+    .card-text {
+      p {
+        display: inline-block
+      }
+    }
+    .card--link {
+      width: 100%;
+      margin-bottom: auto;
+    }
   }
 
 }

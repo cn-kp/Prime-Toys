@@ -17,6 +17,7 @@ import "./App.scss";
 import Home from "./pages/home";
 import LoginForm from "./pages/login";
 import Profile from "./pages/profile"
+import Listings from "./pages/listings"
 
 // Components
 import Navbar from "./components/navbar/navbar"
@@ -58,7 +59,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home/>} />
           <Route path="/profile" element={<Profile />} />
-          <Route path="/Listing" element={"listing-page"} />
+          <Route path="/Listings" element={<Listings/>} />
           <Route path="/login" element={<LoginForm />} />
         </Routes>
         </main>

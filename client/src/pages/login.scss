@@ -14,8 +14,9 @@
     color: $biege;
   }
   
-  #container {
-    border-radius: 2%;
+ .container {
+    &--login {
+      border-radius: 2%;
     width: 800px;
     box-shadow: $box-shadow;
     display: flex;
@@ -24,6 +25,18 @@
     overflow: hidden;
     min-height: 550px;
     background-color: whitesmoke;
+    }
+
+    --right-panel-active .sign_in {
+      transform: translateX(0%)!important;
+    }
+    
+    --right-panel-active .sign_up {
+      transform: translateX(0%)!important;
+      /* opacity: 0!important;
+        z-index: 1 !important; */
+    } 
+    
   }
   
   .overlay_container {
@@ -290,6 +303,14 @@
   h6.grey {
     margin: 1rem;
   }
+
+  .wrapper {
+    &--login {
+      display: grid;
+      place-items: center;
+      height: 70vh;
+    }
+  }
   
   /* Responsive Styles */
   
@@ -382,15 +403,6 @@
     margin-top: 1rem;
   }
   
-  #container.right-panel-active .sign_in {
-    transform: translateX(0%)!important;
-  }
-  
-  #container.right-panel-active .sign_up {
-    transform: translateX(0%)!important;
-    /* opacity: 0!important;
-      z-index: 1 !important; */
-  } 
   
   #container.mobile .overlay_container{
       transform: translateX(100%)!important;
@@ -444,15 +456,7 @@
       margin-top: 1rem;
     }
     
-    #container.right-panel-active .sign_in {
-      transform: translateX(0%)!important;
-    }
     
-    #container.right-panel-active .sign_up {
-      transform: translateX(0%)!important;
-      /* opacity: 0!important;
-        z-index: 1 !important; */
-    } 
     
     #container.mobile .overlay_container{
         transform: translateX(100%)!important;
