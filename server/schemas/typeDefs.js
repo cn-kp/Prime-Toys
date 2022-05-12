@@ -16,7 +16,7 @@ const typeDefs = gql`
     _id: ID
     username: String
     email: String
-    listing: [Toy]
+    listings: [Toy]
   }
   type Auth {
     token: ID

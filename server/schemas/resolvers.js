@@ -5,10 +5,11 @@ const { signToken } = require("../utils/auth");
 const resolvers = {
   Query: {
     user: async (parent, args, context) => {
-      if (context.user) {
-        const user = await User.findById(context.user._id).populate({populate:"toy"});
+
+        const user = await User.findById(context.user._id).populate({ path: 'listings'});
+        console.log(user)
         return user;
-      }
+
     },
     categories: async () => {
       return await Category.find();
@@ -51,6 +52,8 @@ const resolvers = {
       }
 
       const token = signToken(user);
+
+      console.log(token)
 
       return { token, user };
     },

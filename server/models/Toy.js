@@ -21,6 +21,6 @@ const toySchema = new Schema({
   },
 });
 
-const Toys = mongoose.model('Toys', toySchema);
+const Toys = mongoose.model('Toy', toySchema);
 
 module.exports = Toys;
