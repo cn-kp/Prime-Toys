@@ -16,7 +16,7 @@ const typeDefs = gql`
     _id: ID
     username: String
     email: String
-    listing: [Toy]
+    listings: [Toy]
   }
   type Auth {
     token: ID
@@ -25,7 +25,7 @@ const typeDefs = gql`
   type Query {
     categories: [Category]
     toys(category: ID, name: String): [Toy]
-    users: [User]
+    user: User
   }
   type Mutation {
     addUser(username: String!, email: String!, password: String!): Auth
