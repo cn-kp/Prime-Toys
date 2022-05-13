@@ -1,12 +1,12 @@
-const { AuthenticationError } = require("apollo-server-express");
-const { User, Toy, Category } = require("../models");
-const { signToken } = require("../utils/auth");
+const { AuthenticationError } = require('apollo-server-express');
+const { User, Toy, Category } = require('../models');
+const { signToken } = require('../utils/auth');
 
 const resolvers = {
   Query: {
     user: async (parent, args, context) => {
       const user = await User.findById(context.user._id).populate({
-        path: "listings",
+        path: 'listings',
       });
       return user;
     },
@@ -26,7 +26,7 @@ const resolvers = {
         };
       }
 
-      return await Toy.find(params).populate("category");
+      return await Toy.find(params).populate('category');
     },
   },
   Mutation: {
@@ -41,13 +41,13 @@ const resolvers = {
       const user = await User.findOne({ email });
 
       if (!user) {
-        throw new AuthenticationError("No user found with this email address");
+        throw new AuthenticationError('No user found with this email address');
       }
 
       const correctPw = await user.isCorrectPassword(password);
 
       if (!correctPw) {
-        throw new AuthenticationError("Incorrect credentials");
+        throw new AuthenticationError('Incorrect credentials');
       }
 
       const token = signToken(user);
@@ -58,9 +58,9 @@ const resolvers = {
     },
 
     // add toys resolver
-    addToy: async (parent, { name, description, image, category }, context) => {
+    addToy: async (parent, { input }, context) => {
       if (context.user) {
-        const toy = await Toy.create({ name, description, image, category });
+        const toy = await Toy.create({ ...input });
 
         await User.findOneAndUpdate(
           { _id: context.user._id },
