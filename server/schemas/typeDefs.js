@@ -27,11 +27,28 @@ const typeDefs = gql`
     toys(category: ID, name: String): [Toy]
     user: User
   }
+  input addToy {
+    name: String
+    description: String
+    image: String
+    category: updateCategory
+  }
+  input updateCategory {
+    _id: ID
+    name: String
+  }
   type Mutation {
     addUser(username: String!, email: String!, password: String!): Auth
     updateUser(username: String, email: String, password: String): User
     login(email: String!, password: String!): Auth
-    addToys(name: String!, description: String, image: String): Toy
+    addToy(input: addToy): Toy
+    updateToy(
+      _id: ID!
+      name: String!
+      description: String!
+      image: String!
+    ): Toy
+    removeToy(_id: ID!): Toy
   }
 `;
 

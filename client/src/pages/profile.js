@@ -1,55 +1,38 @@
 import React from "react";
-import { useQuery } from '@apollo/client'
+import { useQuery } from "@apollo/client";
 
-import ProfileToyCards from '../components/profileToyCards/profileToyCards'
+import ProfileToyCards from "../components/profileToyCards/profileToyCards";
 
 import "./profile.scss";
 
-import { QUERY_USER } from '../utils/queries';
+import { QUERY_USER } from "../utils/queries";
 
 export default function Profile() {
-
   const { loading, data } = useQuery(QUERY_USER);
   let user;
 
-  if (data){
-    user=data.user;
-    console.log(user.listings)
+  if (data) {
+    user = data.user.listings;
   } else {
-    user = []
+    user = [];
   }
 
   return (
     <div className="profile-container">
       {user.length ? (
         <div className="user-cards">
-          {user.listings.map((listing)=> (
-            <ProfileToyCards 
-            name={listing.name}
-            description={listing.description}
-            image={listing.image}
-            category={listing.category}/>
-
+          {user.map((listing) => (
+            <ProfileToyCards
+              key={listing._id}
+              name={listing.name}
+              description={listing.description}
+              image={listing.image}
+            />
           ))}
-          </div>
+        </div>
       ) : (
         <div>loading </div>
-      )
-    }
-      {/* <ProfileToyCards />
-      <div className="profile-background-image">
-        <img src="https://placehold.it/" alt="placeholder"></img>
-      </div>
-      <div className="userName">username</div>
-      <div>
-        <button className="add-listing-btn">Add a listing</button>
-      </div>
-     {loading ? (
-       <div> You have no toys listed... </div>
-     ) : (
-       <div>Toys cards should be loading here</div>
-     )
-    } */}
+      )}
     </div>
   );
 }

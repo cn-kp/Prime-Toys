@@ -1,13 +1,14 @@
-const { AuthenticationError } = require("apollo-server-express");
-const { User, Toy, Category } = require("../models");
-const { signToken } = require("../utils/auth");
+const { AuthenticationError } = require('apollo-server-express');
+const { User, Toy, Category } = require('../models');
+const { signToken } = require('../utils/auth');
 
 const resolvers = {
   Query: {
     user: async (parent, args, context) => {
-        const user = await User.findById(context.user._id).populate({ path: 'listings'});
-        return user;
-
+      const user = await User.findById(context.user._id).populate({
+        path: 'listings',
+      });
+      return user;
     },
     categories: async () => {
       return await Category.find();
@@ -25,7 +26,7 @@ const resolvers = {
         };
       }
 
-      return await Toy.find(params).populate("category");
+      return await Toy.find(params).populate('category');
     },
   },
   Mutation: {
@@ -40,25 +41,45 @@ const resolvers = {
       const user = await User.findOne({ email });
 
       if (!user) {
-        throw new AuthenticationError("No user found with this email address");
+        throw new AuthenticationError('No user found with this email address');
       }
 
       const correctPw = await user.isCorrectPassword(password);
 
       if (!correctPw) {
-        throw new AuthenticationError("Incorrect credentials");
+        throw new AuthenticationError('Incorrect credentials');
       }
 
       const token = signToken(user);
 
-      console.log(token)
+      // console.log(token)
 
       return { token, user };
     },
-    addToys: async (parent, args, context) => {
+
+    // add toys resolver
+    addToy: async (parent, { input }, context) => {
       if (context.user) {
-        const toys = await Toys.create({ args });
+        const toy = await Toy.create({ ...input });
+
+        await User.findOneAndUpdate(
+          { _id: context.user._id },
+          { $push: { listings: toy } }
+        );
+        return toy;
       }
+    },
+    //update toys by id, dont think it necessary to update category
+    updateToy: async (parent, { _id, name, description, image }) => {
+      return await Toy.findByIdAndUpdate(
+        _id,
+        { name, description, image },
+        { new: true }
+      );
+    },
+    // remove toy based on id
+    removeToy: async (parent, { _id }) => {
+      return Toy.findOneAndDelete({ _id: _id });
     },
   },
 };
