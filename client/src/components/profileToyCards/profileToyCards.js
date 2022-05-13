@@ -4,7 +4,7 @@ import "./profileToyCards.scss";
 
 export default function ProfileToyCards(card){
 
-    const {_name ,description} = card
+    const {name, description, image} = card
 
     return(
       <div className="toy-user-listing">
@@ -12,11 +12,11 @@ export default function ProfileToyCards(card){
         <div className="img-container">
           <img
             className="toy-image"
-            src="https://media.npr.org/assets/img/2011/08/19/istock_000017061174small-6ca3bb7c8b6c768b92153932e822623a95065935.jpg"
+            src={`/images/${image}`} alt={name}
           />
         </div>
-        <h2 className="toy-title">toy title/name</h2>
-        <p className="toy-description"> enter toy description here</p>
+        <h2 className="toy-title">{name}</h2>
+        <p className="toy-description">{description}</p>
         {/* <a href="#" className="btn contact-user"></a> */}
         <div className="listing-date">
           <span>created on:</span>

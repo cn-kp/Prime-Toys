@@ -31,7 +31,9 @@ const typeDefs = gql`
     addUser(username: String!, email: String!, password: String!): Auth
     updateUser(username: String, email: String, password: String): User
     login(email: String!, password: String!): Auth
-    addToys(name: String!, description: String, image: String): Toy
+    addToy(name: String!, description: String, image: String, category:[ID] ): Toy
+    updateToy(_id: ID!, name: String!, description: String!, image: String!): Toy
+    removeToy(_id:ID!): Toy
   }
 `;
 
