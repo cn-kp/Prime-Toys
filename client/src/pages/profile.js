@@ -5,24 +5,30 @@ import ProfileToyCards from '../components/profileToyCards/profileToyCards'
 
 import "./profile.scss";
 
-import { QUERY_USER_TOYS } from '../utils/queries';
+import { QUERY_USER } from '../utils/queries';
 
 export default function Profile() {
 
-  const { loading, data } = useQuery(QUERY_USER_TOYS);
+  const { loading, data } = useQuery(QUERY_USER);
+  let user;
 
-  const userToys = data?.toys || [];  
+  if (data){
+    user=data.user;
+    console.log(user.listings)
+  } else {
+    user = []
+  }
 
   return (
     <div className="profile-container">
-      {userToys.length ? (
+      {user.length ? (
         <div className="user-cards">
-          {userToys.map((toy)=> (
+          {user.listings.map((listing)=> (
             <ProfileToyCards 
-            name={toy.name}
-            description={toy.description}
-            image={toy.image}
-            category={toy.category}/>
+            name={listing.name}
+            description={listing.description}
+            image={listing.image}
+            category={listing.category}/>
 
           ))}
           </div>
