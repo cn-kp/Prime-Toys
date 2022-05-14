@@ -35,7 +35,7 @@ const typeDefs = gql`
   }
   input updateCategory {
     _id: ID
-    name: String
+    name: String!
   }
   type Mutation {
     addUser(username: String!, email: String!, password: String!): Auth
