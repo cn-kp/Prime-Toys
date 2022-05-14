@@ -1,39 +1,65 @@
 @import '../../variables.scss';
 
-img {
-  width: 100%;
-  height: auto;
-  aspect-ratio: attr(width) / attr(height);
-}
-
 .card {
+  border-radius: $border-radius;
   box-shadow: $box-shadow;
-  padding: 0.74em;
+  overflow: hidden;
 
-  &:hover {
-    transform: scale(102%);
-    transition: all 0.2s ease-out;
-  }
+  .card-image {
+    overflow: hidden;
+    padding-bottom: 0;
+    margin-bottom: 0.5rem;
 
-  .card--body {
-    height: 50%;
+    img {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      object-fit: contain;
+      object-position: center;
+      max-height: 250px;
 
-    .card--text {
-      .toy--name {
-        padding: 0.5em 0;
-      }
-      .toy--description {
-        font-size: 0.9em;
-        font-weight: 300;
-        padding-bottom: 0.5em;
+      &:hover {
+        transform: scale(102%);
+        transition: 0.2s transform ease-out;
       }
     }
-    .card--link {
-      display: flex;
-      height: auto;
-      margin-bottom: auto;
-      align-self: flex-end;
-      width: 100%;
+  }
+
+  .card-body {
+    padding: $padding;
+    padding-bottom: 0.5em;
+
+    .card-text {
+      .toy-name {
+        padding-bottom: 0.5rem;
+        font-size: 1rem;
+      }
+      .toy-description {
+        font-size: 0.8rem;
+        font-weight: 300;
+      }
+    }
+    .card-footer {
+      margin-top: 1rem;
+
+      .btn {
+        background: $red;
+        color: $dark;
+        border: none;
+        font-size: 1rem;
+        padding: 0.5em 0.75em;
+        border-radius: $border-radius;
+        cursor: pointer;
+
+        & + .btn {
+          margin-left: 0.25rem;
+        }
+      }
+
+      .btn-outline {
+        background: none;
+        border: 1px solid $red;
+        color: $red;
+      }
     }
   }
 }

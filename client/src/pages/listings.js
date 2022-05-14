@@ -21,7 +21,7 @@ export default function Listings() {
   return (
     <section className="wrapper--listings">
       {toys.length ? (
-        <div className="container--card">
+        <div className="card-grid">
           {toys.map((toy) => (
             <ToyCard
               key={toy._id}
