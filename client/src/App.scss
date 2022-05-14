@@ -1,13 +1,18 @@
-@import "./variables.scss";
+@import './variables.scss';
 
 body {
   font-size: 16px;
+  font-family: $custom-fonts;
 }
 
 footer {
   display: flex;
   justify-content: center;
   font-size: 25px;
+}
+
+section {
+  min-height: 80vh;
 }
 
 a {
@@ -48,6 +53,5 @@ a {
   }
 
   @media (min-width: 700px) {
-
   }
 }
