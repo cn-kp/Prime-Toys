@@ -1,11 +1,12 @@
-import React from "react";
-import { useQuery } from "@apollo/client";
+import React from 'react';
+import { useQuery } from '@apollo/client';
 
-import ProfileToyCards from "../components/profileToyCards/profileToyCards";
+import ProfileToyCards from '../components/profileToyCards/profileToyCards';
+import Login from './login';
 
-import "./profile.scss";
+import './profile.scss';
 
-import { QUERY_USER } from "../utils/queries";
+import { QUERY_USER } from '../utils/queries';
 
 export default function Profile() {
   const { loading, data } = useQuery(QUERY_USER);
@@ -31,7 +32,9 @@ export default function Profile() {
           ))}
         </div>
       ) : (
-        <div>loading </div>
+        <div className="sign-in-prompt">
+          <Login />
+        </div>
       )}
     </div>
   );
