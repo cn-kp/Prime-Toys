@@ -15,7 +15,7 @@
       aspect-ratio: 16 / 9;
       object-fit: contain;
       object-position: center;
-      max-height: 250px;
+      min-height: 300px;
 
       &:hover {
         transform: scale(102%);
@@ -25,13 +25,15 @@
   }
 
   .card-body {
-    padding: $padding;
-    padding-bottom: 0.5em;
+    padding: 0.5rem 1rem;
+    padding-bottom: 0.4rem;
+    position: relative;
+    height: 90px;
 
     .card-text {
       .toy-name {
         padding-bottom: 0.5rem;
-        font-size: 1rem;
+        font-size: 0.8rem;
       }
       .toy-description {
         font-size: 0.8rem;
@@ -40,6 +42,9 @@
     }
     .card-footer {
       margin-top: 1rem;
+      margin-bottom: 0.25em;
+      position: absolute;
+      bottom: 0;
 
       .btn {
         background: $red;
@@ -51,7 +56,7 @@
         cursor: pointer;
 
         & + .btn {
-          margin-left: 0.25rem;
+          margin-left: 0.5rem;
         }
       }
 
@@ -59,6 +64,12 @@
         background: none;
         border: 1px solid $red;
         color: $red;
+
+        &:hover {
+          background: $red;
+          opacity: 0.9;
+          color: black;
+        }
       }
     }
   }
