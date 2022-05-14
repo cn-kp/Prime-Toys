@@ -1,14 +1,14 @@
-@import "../../variables.scss";
+@import '../../variables.scss';
 
 img {
   width: 100%;
-  overflow: hidden;
+  height: auto;
+  aspect-ratio: attr(width) / attr(height);
 }
 
 .card {
-    box-shadow: $box-shadow;
-    padding: 0.74em;
-
+  box-shadow: $box-shadow;
+  padding: 0.74em;
 
   &:hover {
     transform: scale(102%);
@@ -16,18 +16,24 @@ img {
   }
 
   .card--body {
-    padding: 0 0.8em;
-    width: 100%;
+    height: 50%;
 
-    .card-text {
-      p {
-        display: inline-block
+    .card--text {
+      .toy--name {
+        padding: 0.5em 0;
+      }
+      .toy--description {
+        font-size: 0.9em;
+        font-weight: 300;
+        padding-bottom: 0.5em;
       }
     }
     .card--link {
-      width: 100%;
+      display: flex;
+      height: auto;
       margin-bottom: auto;
+      align-self: flex-end;
+      width: 100%;
     }
   }
-
 }
