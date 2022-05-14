@@ -1,4 +1,4 @@
-@import "../variables.scss";
+@import '../variables.scss';
 
 // .container {
 //   &--card {
@@ -8,21 +8,18 @@
 //   }
 // }
 
-.container {
-  &--card {
-    margin: 2em;
+.card-grid {
+  margin: 2em;
   display: grid;
   gap: 20px;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
 
   @media (min-width: 980px) {
     min-height: 70vh;
   }
-  }
 }
+
 .listings {
-  
-  
 }
 
 .wrapper {

@@ -1,33 +1,76 @@
-@import "../../variables.scss";
-
-img {
-  width: 100%;
-  overflow: hidden;
-}
+@import '../../variables.scss';
 
 .card {
-    box-shadow: $box-shadow;
-    padding: 0.74em;
+  border-radius: $border-radius;
+  box-shadow: $box-shadow;
+  overflow: hidden;
 
+  .card-image {
+    overflow: hidden;
+    padding-bottom: 0;
+    margin-bottom: 0.5rem;
 
-  &:hover {
-    transform: scale(102%);
-    transition: all 0.2s ease-out;
-  }
+    img {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      object-fit: contain;
+      object-position: center;
+      min-height: 300px;
 
-  .card--body {
-    padding: 0 0.8em;
-    width: 100%;
-
-    .card-text {
-      p {
-        display: inline-block
+      &:hover {
+        transform: scale(102%);
+        transition: 0.2s transform ease-out;
       }
     }
-    .card--link {
-      width: 100%;
-      margin-bottom: auto;
-    }
   }
 
+  .card-body {
+    padding: 0.5rem 1rem;
+    padding-bottom: 0.4rem;
+    position: relative;
+    height: 90px;
+
+    .card-text {
+      .toy-name {
+        padding-bottom: 0.5rem;
+        font-size: 0.8rem;
+      }
+      .toy-description {
+        font-size: 0.8rem;
+        font-weight: 300;
+      }
+    }
+    .card-footer {
+      margin-top: 1rem;
+      margin-bottom: 0.25em;
+      position: absolute;
+      bottom: 0;
+
+      .btn {
+        background: $red;
+        color: $dark;
+        border: none;
+        font-size: 1rem;
+        padding: 0.5em 0.75em;
+        border-radius: $border-radius;
+        cursor: pointer;
+
+        & + .btn {
+          margin-left: 0.5rem;
+        }
+      }
+
+      .btn-outline {
+        background: none;
+        border: 1px solid $red;
+        color: $red;
+
+        &:hover {
+          background: $red;
+          opacity: 0.9;
+          color: black;
+        }
+      }
+    }
+  }
 }

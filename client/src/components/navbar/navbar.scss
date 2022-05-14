@@ -1,52 +1,148 @@
-@import "../../variables.scss";
+@import '../../variables.scss';
 
-.navbar{
+.navbar {
+  display: flex;
+  font-size: 1em;
+  font-family: $custom-fonts;
+  padding: 0.65rem 0;
+  z-index: 1;
+  background-color: $red;
+  position: relative;
+
+  .btn {
+    position: fixed;
+    right: 10px;
+    top: 22px;
+    z-index: 10;
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+
+    .fa-solid {
+      font-size: 2em;
+      visibility: hidden;
+    }
+  }
+
+  .title-container {
+    padding: 0.5rem;
+    border-radius: 5px;
+    margin-left: 3rem;
+
+    .header-title {
+      font-size: 1.4rem;
+      font-weight: 500;
+      border: 2px solid $dark;
+      padding: 0.5rem;
+    }
+  }
+
+  .nav-items {
     display: flex;
-    font-size: 0.6em;
-    font-family: "sans-serif";
-    padding: 1rem 0;
-    z-index: 1;
-    border: 2px solid $blue;
+    justify-content: space-between;
+    list-style: none;
+    margin: auto 0;
+    margin-left: auto;
+    margin-right: 1rem;
+  }
 
-    div{
-        background-color: $red;
-        padding: 0.5rem;
-        border-radius: 5px;
+  &:last-child {
+    margin-right: 0;
+  }
+
+  li {
+    display: inline-block;
+    color: black;
+    padding-right: 0.8em;
+
+    &:hover {
+      text-decoration: underline;
+      color: $dark;
+      transition: 0.5s text-decoration ease;
     }
-//     background-color: linear-gradient(to right, $copper, $red)
-    .nav--items {
-        display: flex;
-        justify-content: space-between;
-        list-style: none;
-        margin: auto 0;
-        margin-left: auto;
-        
-     li   {
-            display:inline-block;
-            border: 1px dashed white;
-            color: black;
-            vertical-align: middle;
-            padding-right: 0.8em;
 
-            a {
-                font-size: 1.5em;
-            }
+    > * {
+      padding-right: 0.2em;
+      padding-left: 0.2em;
+      margin-right: 2rem;
+      transition: all 0.2s ease;
+    }
+
+    @media (min-width: 992px) {
+      > * {
+        margin-right: 3rem;
+      }
+    }
+
+    a {
+      display: inline-block;
+      position: relative;
+      font-size: 1rem;
+
+      &:before {
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: 2px;
+        bottom: 0;
+        margin: -5px 0;
+        background-color: $dark;
+        visibility: hidden;
+        transform: scaleX(0);
+        transition: all 0.4s ease-in-out 0s;
+      }
+      &:hover:before {
+        visibility: visible;
+        transform: scaleX(1);
+      }
+    }
+  }
+}
+
+/* ================= MEDIA QUERIES =============== */
+
+//Navbar mobile menu
+@media (max-width: 600px) {
+  .navbar {
+    .btn {
+      .fa-solid {
+        visibility: visible;
+      }
+    }
+    .nav-items {
+      display: block;
+      overflow-y: scroll;
+      list-style: none;
+      position: fixed;
+      top: 0;
+      background: $red;
+      left: 0;
+      bottom: 0;
+      height: 100vh;
+      width: 0;
+      overflow: hidden;
+      max-width: 200px;
+      opacity: 0.85;
+      z-index: 9;
+
+      &.showMenu {
+        width: 100%;
+      }
+
+      li {
+        &:first-child {
+          margin-top: 7rem;
         }
+
+        a {
+          display: block;
+          padding: 1.5em 40px;
+          text-decoration: none;
+          color: #3fffd2;
+          text-transform: uppercase;
+          font-weight: bold;
+        }
+      }
     }
-
-}
-
-
-@media screen and (min-width:600px) {
-    .navbar{
-        font-size: 1em;
-        justify-content: space-around;
-        // background-color: linear-gradient(to right,$copper,$red)
-    }
-}
-
-li:hover{
-    text-decoration: underline;
-        color: $purple;
-        background:white
+  }
 }
