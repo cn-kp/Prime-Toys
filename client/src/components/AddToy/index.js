@@ -1,25 +1,25 @@
-import React, { useState } from "react";
-import { useMutation } from "@apollo/client";
-import { ADD_TOY } from "../../utils/mutations";
-import Auth from "../../utils/auth";
+import React, { useState } from 'react';
+import { useMutation } from '@apollo/client';
+import { ADD_TOY } from '../../utils/mutations';
+import Auth from '../../utils/auth';
 
-import "./profileHeader.scss";
+import './AddToy.scss';
 
-import { QUERY_CATEGORY } from "../../utils/queries";
-import { Button, Modal } from "react-bootstrap";
+import { QUERY_CATEGORY } from '../../utils/queries';
+import { Button, Modal } from 'react-bootstrap';
 
-import CategoryOptions from "../categoryOptions/categoryOptions";
+import CategoryOptions from '../CategoryId';
 
-const ProfileHeader = (data) => {
+const AddToy = (data) => {
   const [showModal, setShowModal] = useState(false);
   const [toyData, setToyData] = useState({
-    name: "",
-    description: "",
-    image: "",
-    category: { _id: "" },
+    name: '',
+    description: '',
+    image: '',
+    category: { _id: '' },
   });
 
-  const [categoryName, setCategoryName] = useState({ category: "" });
+  const [categoryName, setCategoryName] = useState({ category: '' });
 
   const modalClose = () => setShowModal(false);
   const modalShow = () => setShowModal(true);
@@ -54,14 +54,16 @@ const ProfileHeader = (data) => {
     // const token = Auth.loggedIn() ? Auth.getToken() : null;
     try {
       const toyMutationResponse = await AddToy({
-        variables: {input: { 
-          name: toyData.name,
-          description: toyData.description,
-          image: toyData.image,
-          category: { _id: toyData.category },
-        }},
+        variables: {
+          input: {
+            name: toyData.name,
+            description: toyData.description,
+            image: toyData.image,
+            category: { _id: toyData.category },
+          },
+        },
       });
-      console.log(toyMutationResponse)
+      console.log(toyMutationResponse);
     } catch (err) {
       console.log(err);
     }
@@ -137,4 +139,4 @@ const ProfileHeader = (data) => {
   );
 };
 
-export default ProfileHeader;
+export default AddToy;

@@ -1,7 +1,8 @@
-@import "./variables.scss";
+@import './variables.scss';
 
 body {
   font-size: 16px;
+  font-family: $custom-fonts;
 }
 
 footer {
@@ -23,31 +24,24 @@ a {
   padding: 0 1em;
 }
 
-.wrapper {
+.grid {
   display: grid;
-  grid-template-columns: repeat(12, [col-start] 1fr);
-  gap: 20px;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto 1fr;
+  grid-template-areas:
+    'header'
+    'main';
+  height: 100vh;
 
-  > * {
-    grid-column: col-start / span 12;
+  nav {
+    grid-area: 'header';
   }
 
-  @media (min-width: 500px) {
-    nav {
-      grid-column: col-start / span 12;
-      grid-row: 1 / 4;
-    }
-    main {
-      grid-column: col-start / span 12;
-      grid-row: span 2;
-    }
-
-    footer {
-      grid: col-start 4 / span 12;
-    }
-  }
-
-  @media (min-width: 700px) {
-
+  main {
+    grid-area: 'main';
+    display: grid;
+    grid-template-rows: 1fr auto;
+    grid-template-columns: 1fr;
+    overflow: auto;
   }
 }

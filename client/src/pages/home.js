@@ -1,16 +1,15 @@
 import React from 'react';
-import { useQuery } from '@apollo/client'
+import { useQuery } from '@apollo/client';
 
-import './home.scss'
+import './home.scss';
 
-export default function Home(){
-
-    
-    
-
-    return (
-        <section className="home">
-        Some content here
-        </section>
-    )
+export default function Home() {
+  return (
+    <section className="home">
+      <div className="container--title">
+        <h1 className="title">Prime Toys</h1>
+        <h2 className="subtitle">Trade or donate your toys here</h2>
+      </div>
+    </section>
+  );
 }

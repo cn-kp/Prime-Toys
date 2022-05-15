@@ -1,12 +1,13 @@
-import React from "react";
-import { useQuery } from "@apollo/client";
+import React from 'react';
+import { useQuery } from '@apollo/client';
 
-import ProfileToyCards from "../components/profileToyCards/profileToyCards";
-import ProfileHeader from "../components/profileHeader/profileHeader";
+import AddToy from '../components/AddToy';
+import ToyCards from '../components/ToyCard';
 
-import "./profile.scss";
+import Login from './login';
 
-import { QUERY_USER, QUERY_CATEGORY } from "../utils/queries";
+import { QUERY_USER, QUERY_CATEGORY } from '../utils/queries';
+import './profile.scss';
 
 export default function Profile() {
   const { loading, data } = useQuery(QUERY_USER);
@@ -18,24 +19,24 @@ export default function Profile() {
   } else {
     user = [];
   }
-  
-  const { loading:loading1, data:data1 } = useQuery(QUERY_CATEGORY);
+
+  const { loading: loading1, data: data1 } = useQuery(QUERY_CATEGORY);
   let categoryData;
 
   if (data1) {
     categoryData = data1.categories;
     // console.log(categoryData);
-  }else {
+  } else {
     categoryData = [];
   }
 
   return (
     <div className="profile-container">
       {user.length ? (
-        <div className="user-cards">
-          <ProfileHeader key={'key'} data={categoryData}/>
+        <div className="card-grid">
+          <AddToy key={'key'} data={categoryData} />
           {user.map((listing) => (
-            <ProfileToyCards
+            <ToyCards
               key={listing._id}
               name={listing.name}
               description={listing.description}
@@ -44,7 +45,9 @@ export default function Profile() {
           ))}
         </div>
       ) : (
-        <div>loading </div>
+        <div className="sign-in-prompt">
+          <Login />
+        </div>
       )}
     </div>
   );

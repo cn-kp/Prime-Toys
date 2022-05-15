@@ -1,5 +1,5 @@
 // Dependencies
-import React from "react";
+import React from 'react';
 import {
   ApolloClient,
   InMemoryCache,
@@ -7,21 +7,29 @@ import {
   createHttpLink,
 } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 // Styles
-import "./reset.scss";
-import "./App.scss";
+import './reset.scss';
+import './App.scss';
 
 // Pages
+<<<<<<< HEAD
 import Home from "./pages/home";
 import LoginForm from "./pages/login";
 import Profile from "./pages/profile"
 import Listings from "./pages/listings"
 import {StoreProvider} from "./utils/GlobalState"
+=======
+import Home from './pages/home';
+import LoginForm from './pages/login';
+import Profile from './pages/profile';
+import Listings from './pages/listings';
+>>>>>>> main
 
 // Components
-import Navbar from "./components/navbar/navbar"
+import Navbar from './components/Navbar';
+import Footer from './components/Footer';
 // import Layout from "./components/layout/layout"
 
 // Construct our main GraphQL API endpoint
@@ -51,23 +59,21 @@ const client = new ApolloClient({
 function App() {
   return (
     <ApolloProvider client={client}>
-    <Router>
-      <div className="wrapper">
-        <StoreProvider>
-        <Navbar />
+      <Router>
+        <div className="grid">
+          <Navbar />
 
-        <main>
-        <Routes>
-          <Route path="/" element={<Home/>} />
-          <Route path="/profile" element={<Profile />} />
-          <Route path="/Listings" element={<Listings/>} />
-          <Route path="/login" element={<LoginForm />} />
-        </Routes>
-        </main>
-        <footer>This is a footer</footer>
-        </StoreProvider>
-      </div>
-    </Router>
+          <main>
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/profile" element={<Profile />} />
+              <Route path="/Listings" element={<Listings />} />
+              <Route path="/login" element={<LoginForm />} />
+            </Routes>
+            <Footer />
+          </main>
+        </div>
+      </Router>
     </ApolloProvider>
   );
 }
