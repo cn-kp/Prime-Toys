@@ -18,6 +18,7 @@ import Home from "./pages/home";
 import LoginForm from "./pages/login";
 import Profile from "./pages/profile"
 import Listings from "./pages/listings"
+import {StoreProvider} from "./utils/GlobalState"
 
 // Components
 import Navbar from "./components/navbar/navbar"
@@ -52,7 +53,7 @@ function App() {
     <ApolloProvider client={client}>
     <Router>
       <div className="wrapper">
-        
+        <StoreProvider>
         <Navbar />
 
         <main>
@@ -64,6 +65,7 @@ function App() {
         </Routes>
         </main>
         <footer>This is a footer</footer>
+        </StoreProvider>
       </div>
     </Router>
     </ApolloProvider>
