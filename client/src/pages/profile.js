@@ -1,7 +1,9 @@
 import React from 'react';
 import { useQuery } from '@apollo/client';
 
-import ProfileToyCards from '../components/profileToyCards/profileToyCards';
+// import ProfileToyCards from '../components/profileToyCards/profileToyCards';
+import ToyCards from '../components/ToyCard';
+
 import Login from './login';
 
 import './profile.scss';
@@ -21,9 +23,9 @@ export default function Profile() {
   return (
     <div className="profile-container">
       {user.length ? (
-        <div className="user-cards">
+        <div className="card-grid">
           {user.map((listing) => (
-            <ProfileToyCards
+            <ToyCards
               key={listing._id}
               name={listing.name}
               description={listing.description}

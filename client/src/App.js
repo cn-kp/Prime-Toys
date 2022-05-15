@@ -20,7 +20,8 @@ import Profile from './pages/profile';
 import Listings from './pages/listings';
 
 // Components
-import Navbar from './components/navbar/navbar';
+import Navbar from './components/Navbar';
+import Footer from './components/Footer';
 // import Layout from "./components/layout/layout"
 
 // Construct our main GraphQL API endpoint
@@ -51,7 +52,7 @@ function App() {
   return (
     <ApolloProvider client={client}>
       <Router>
-        <div className="wrapper">
+        <div className="grid">
           <Navbar />
 
           <main>
@@ -61,8 +62,8 @@ function App() {
               <Route path="/Listings" element={<Listings />} />
               <Route path="/login" element={<LoginForm />} />
             </Routes>
+            <Footer />
           </main>
-          <footer>This is a footer</footer>
         </div>
       </Router>
     </ApolloProvider>
