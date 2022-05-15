@@ -1,5 +1,5 @@
-import { useReducer } from "react";
-import { UPDATE_TOY, REMOVE_TOY } from "./actions";
+import { useReducer } from 'react';
+import { UPDATE_TOY, REMOVE_TOY } from './actions';
 
 export const reducer = (state, action) => {
   switch (action.type) {
@@ -19,5 +19,5 @@ export const reducer = (state, action) => {
 };
 
 export function useToyReducer(initialState) {
-  return useReducer(reducer, initialState)
+  return useReducer(reducer, initialState);
 }
