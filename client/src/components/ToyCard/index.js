@@ -1,10 +1,30 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { useMatch } from 'react-router-dom';
 
 import './ToyCard.scss';
 
 export default function ToyCard(card) {
   const { _id, name, description, image, category } = card;
+
+  const ProfileCardButtons = () => {
+    const match = useMatch('/profile');
+
+    if (match) {
+      return (
+        <div className="card-footer">
+          <button className="btn">Update</button>
+          <button className="btn btn-outline">Remove</button>
+        </div>
+      );
+    } else {
+      return (
+        <div className="card-footer">
+          <button className="btn">Details</button>
+          <button className="btn btn-outline">Trade</button>
+        </div>
+      );
+    }
+  };
 
   return (
     <div className="card">
@@ -17,10 +37,7 @@ export default function ToyCard(card) {
           <p className="toy-name">{name}</p>
           <p className="toy-description">{category}</p>
         </div>
-        <div className="card-footer">
-          <button className="btn">Details</button>
-          <button className="btn btn-outline">Trade</button>
-        </div>
+        <ProfileCardButtons />
       </div>
     </div>
   );
