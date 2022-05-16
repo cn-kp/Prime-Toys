@@ -1,10 +1,18 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import Auth from '../../utils/auth';
+import { authActions } from '../../slices/auth';
 import './navbar.scss';
 
-export default function Navbar() {
+const Navbar = (props) => {
   const [navbarOpen, setNavbarOpen] = useState(false);
+
+  const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
+
+  const dispatch = useDispatch();
+
+  console.log(isLoggedIn);
 
   const handleToggle = () => {
     setNavbarOpen((prev) => !prev);
@@ -17,9 +25,10 @@ export default function Navbar() {
   const logOut = () => {
     closeMenu();
     Auth.logout();
+    dispatch(authActions.logout);
   };
 
-  if (Auth.loggedIn()) {
+  if (isLoggedIn) {
     return (
       <nav>
         <div className="navbar">
@@ -109,4 +118,6 @@ export default function Navbar() {
       </nav>
     );
   }
-}
+};
+
+export default Navbar;

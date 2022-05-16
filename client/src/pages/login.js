@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
 import { LOGIN_USER } from '../utils/mutations';
+import { authActions } from '../slices/auth';
 import './login.scss';
 
 import Auth from '../utils/auth';
@@ -15,6 +17,7 @@ const LoginForm = (props) => {
   const [login, { error, data }] = useMutation(LOGIN_USER);
 
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -34,7 +37,7 @@ const LoginForm = (props) => {
         variables: { ...formState },
       });
 
-      Auth.login(data.login.token);
+      dispatch(authActions.login());
       navigate('/profile', { replace: true });
     } catch (err) {
       console.error(err);
@@ -83,7 +86,7 @@ const LoginForm = (props) => {
                 />
                 <i className="fa-solid fa-envelope"></i>
               </div>
-              <div onSubmit={handleFormSubmit} className="password icon">
+              <div className="password icon">
                 <input
                   type="password"
                   id="password_up"

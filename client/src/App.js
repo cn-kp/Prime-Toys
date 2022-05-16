@@ -1,5 +1,6 @@
 // Dependencies
 import React from 'react';
+import { Provider } from 'react-redux';
 import {
   ApolloClient,
   InMemoryCache,
@@ -8,6 +9,8 @@ import {
 } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+
+import store from './store';
 
 // Styles
 import './reset.scss';
@@ -18,7 +21,6 @@ import Home from './pages/home';
 import LoginForm from './pages/login';
 import Profile from './pages/profile';
 import Listings from './pages/listings';
-import { StoreProvider } from './utils/GlobalState';
 
 // Components
 import Navbar from './components/Navbar';
@@ -51,23 +53,25 @@ const client = new ApolloClient({
 
 function App() {
   return (
-    <ApolloProvider client={client}>
-      <Router>
-        <div className="grid">
-          <Navbar />
+    <Provider store={store}>
+      <ApolloProvider client={client}>
+        <Router>
+          <div className="grid">
+            <Navbar />
 
-          <main>
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/profile" element={<Profile />} />
-              <Route path="/Listings" element={<Listings />} />
-              <Route path="/login" element={<LoginForm />} />
-            </Routes>
-            <Footer />
-          </main>
-        </div>
-      </Router>
-    </ApolloProvider>
+            <main>
+              <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/profile" element={<Profile />} />
+                <Route path="/Listings" element={<Listings />} />
+                <Route path="/login" element={<LoginForm />} />
+              </Routes>
+              <Footer />
+            </main>
+          </div>
+        </Router>
+      </ApolloProvider>
+    </Provider>
   );
 }
 
