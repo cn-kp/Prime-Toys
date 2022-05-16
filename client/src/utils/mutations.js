@@ -25,3 +25,11 @@ mutation AddToy($input: addToy) {
   }
 }
 `
+
+export const REMOVE_TOY = gql`
+mutation RemoveToy($id: ID) {
+  removeToy(_id: $id) {
+    _id
+  }
+}
+`

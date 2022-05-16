@@ -1,19 +1,44 @@
-import React from 'react';
-import { useMatch } from 'react-router-dom';
+import React, { useState } from "react";
+import { useMatch } from "react-router-dom";
+import { useMutation } from "@apollo/client";
+import { REMOVE_TOY } from "../../utils/mutations";
 
-import './ToyCard.scss';
+import "./ToyCard.scss";
 
 export default function ToyCard(card) {
-  const { _id, name, description, image, category } = card;
+  const { id, name, description, image, category } = card;
+  // console.log(id);
+  const [RemoveToy] = useMutation(REMOVE_TOY);
 
+  const removeToyHandler = async (event) => {
+    event.preventDefault();
+    const { name, value } = event.target;
+    console.log(value);
+    try {
+      const removeToyMutation = await RemoveToy({
+        variables: {
+          id: value,
+        },
+      });
+    } catch (err) {
+      console.log(err);
+    }
+  };
   const ProfileCardButtons = () => {
-    const match = useMatch('/profile');
+    const match = useMatch("/profile");
 
     if (match) {
       return (
         <div className="card-footer">
           <button className="btn">Update</button>
-          <button className="btn btn-outline">Remove</button>
+          <button
+            className="btn btn-outline"
+            name="id"
+            value={id}
+            onClick={removeToyHandler}
+          >
+            Remove
+          </button>
         </div>
       );
     } else {
