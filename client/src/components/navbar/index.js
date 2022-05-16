@@ -1,10 +1,16 @@
-import React, { useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { NavLink, useNavigate } from 'react-router-dom';
 import Auth from '../../utils/auth';
+import { authActions } from '../../slices/auth';
 import './navbar.scss';
 
-export default function Navbar() {
+const Navbar = (props) => {
   const [navbarOpen, setNavbarOpen] = useState(false);
+
+  const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
+
+  const dispatch = useDispatch();
 
   const handleToggle = () => {
     setNavbarOpen((prev) => !prev);
@@ -14,12 +20,13 @@ export default function Navbar() {
     setNavbarOpen(false);
   };
 
-  const logOut = () => {
+  const logOut = async () => {
     closeMenu();
     Auth.logout();
+    dispatch(authActions.logout());
   };
 
-  if (Auth.loggedIn()) {
+  if (isLoggedIn) {
     return (
       <nav>
         <div className="navbar">
@@ -35,30 +42,22 @@ export default function Navbar() {
           </button>
           <ul className={`nav-items ${navbarOpen ? ' showMenu' : ''}`}>
             <li>
-              <NavLink to="/" activeClassName="active-link" onClick={closeMenu}>
+              <NavLink to="/" onClick={closeMenu}>
                 Home
               </NavLink>
             </li>
             <li>
-              <NavLink
-                to="/profile"
-                activeClassName="active-link"
-                onClick={closeMenu}
-              >
+              <NavLink to="/profile" onClick={closeMenu}>
                 Profile
               </NavLink>
             </li>
             <li>
-              <NavLink
-                to="/listings"
-                activeClassName="active-link"
-                onClick={closeMenu}
-              >
+              <NavLink to="/listings" onClick={closeMenu}>
                 Listings
               </NavLink>
             </li>
             <li>
-              <NavLink to="/" onClick={logOut}>
+              <NavLink onClick={logOut} to="/">
                 Logout
               </NavLink>
             </li>
@@ -82,25 +81,17 @@ export default function Navbar() {
           </button>
           <ul className={`nav-items ${navbarOpen ? ' showMenu' : ''}`}>
             <li>
-              <NavLink to="/" activeClassName="active-link" onClick={closeMenu}>
+              <NavLink to="/" onClick={closeMenu}>
                 Home
               </NavLink>
             </li>
             <li>
-              <NavLink
-                to="/listings"
-                activeClassName="active-link"
-                onClick={closeMenu}
-              >
+              <NavLink to="/listings" onClick={closeMenu}>
                 Listings
               </NavLink>
             </li>
             <li>
-              <NavLink
-                to="/login"
-                activeClassName="active-link"
-                onClick={closeMenu}
-              >
+              <NavLink to="/login" onClick={closeMenu}>
                 Login
               </NavLink>
             </li>
@@ -109,4 +100,6 @@ export default function Navbar() {
       </nav>
     );
   }
-}
+};
+
+export default Navbar;
