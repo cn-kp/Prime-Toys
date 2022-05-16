@@ -8,19 +8,8 @@
 //   }
 // }
 
-.card-grid {
-  margin: 2em;
-  display: grid;
-  gap: 20px;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-
-  @media (min-width: 980px) {
-  }
-}
-
-.wrapper {
-  &--listings {
-    padding-left: 1em;
-    padding-right: 1em;
+@media (min-width: 768px) {
+  .wrapper--listings {
+    padding: 0 1rem;
   }
 }

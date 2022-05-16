@@ -1,5 +1,5 @@
 @import './variables.scss';
-
+@import 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css';
 body {
   font-size: 16px;
   font-family: $custom-fonts;
@@ -43,5 +43,15 @@ a {
     grid-template-rows: 1fr auto;
     grid-template-columns: 1fr;
     overflow: auto;
+  }
+}
+
+.card-grid {
+  margin: 2em;
+  display: grid;
+  gap: 20px;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 2fr));
+
+  @media (min-width: 980px) {
   }
 }
