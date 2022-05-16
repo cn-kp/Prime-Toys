@@ -31,6 +31,7 @@ db.once('open', async () => {
         'Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.',
       image: 'spiderman.jpg',
       category: categories[0]._id,
+      "isFree": false,
     },
     {
       name: 'Marvel Legends Series - Avengers: Infinity Saga - Thor Figure',
@@ -47,6 +48,7 @@ db.once('open', async () => {
       description:
         'Donec volutpat erat erat, sit amet gravida justo sodales in. Phasellus tempus euismod urna. Proin ultrices nisi ut ipsum congue, vitae porttitor libero suscipit. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Aliquam lacinia a nisi non congue.',
       image: 'lego-city.jpg',
+      "isFree": false,
     },
     {
       name: 'Nurture Me Newborn Baby Doll & Accessories',
@@ -54,6 +56,7 @@ db.once('open', async () => {
       description:
         'Praesent placerat, odio vel euismod venenatis, lectus arcu laoreet felis, et fringilla sapien turpis vestibulum nisl.',
       image: 'baby-doll.jpg',
+      "isFree": false,
     },
     {
       name: 'Furby Purple',
@@ -75,6 +78,7 @@ db.once('open', async () => {
       description:
         'In sodales, ipsum quis ultricies porttitor, tellus urna aliquam arcu, eget venenatis purus ligula ut nisi. Fusce ut felis dolor. Mauris justo ante, aliquet non tempus in, tempus ac lorem. Aliquam lacinia dolor eu sem eleifend ultrices. Etiam mattis metus metus. Sed ligula dui, placerat non turpis vitae, suscipit volutpat elit. Phasellus sagittis, diam elementum suscipit fringilla, libero mauris scelerisque ex, ac interdum diam erat non sapien.',
       image: 'hotwheels-diecast-models.jpg',
+      "isFree": false,
     },
     {
       name: 'Tales at Bedtime',
@@ -89,6 +93,7 @@ db.once('open', async () => {
       description:
         'Ut vulputate hendrerit nibh, a placerat elit cursus interdum.',
       image: 'spinning-top.jpg',
+      "isFree": false,
     },
     {
       name: 'Set of Plastic Horses',
@@ -103,6 +108,7 @@ db.once('open', async () => {
       description:
         'Vestibulum et erat finibus erat suscipit vulputate sed vitae dui. Ut laoreet tellus sit amet justo bibendum ultrices. Donec vitae felis vestibulum, congue augue eu, finibus turpis.',
       image: 'teddy-bear.jpg',
+      "isFree": false,
     },
     {
       name: 'Alphabet Blocks',

@@ -11,6 +11,8 @@ const typeDefs = gql`
     description: String
     image: String
     category: Category
+    createdAt: String
+    isFree: Boolean
   }
   type User {
     _id: ID
@@ -32,6 +34,7 @@ const typeDefs = gql`
     description: String
     image: String
     category: updateCategory
+    isFree: Boolean
   }
   input updateCategory {
     _id: ID

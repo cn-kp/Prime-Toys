@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const dateFormat = require('../utils/formateDate')
 
 const { Schema } = mongoose;
 
@@ -13,6 +14,15 @@ const toySchema = new Schema({
   },
   image: {
     type: String,
+  },
+  createdAt: {
+    type: Date,
+    default: Date.now(),
+    get: (timestamp) => dateFormat(timestamp),
+  },
+  isFree: {
+    type: Boolean,
+    default: true
   },
   category: {
     type: Schema.Types.ObjectId,
