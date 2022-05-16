@@ -18,7 +18,7 @@ const LoginForm = (props) => {
 
   const [currentView, setCurrentView] = useState('logIn');
 
-  const [login, { error, data }] = useMutation(LOGIN_USER);
+  const [login] = useMutation(LOGIN_USER);
 
   const loginForm = useFormik({
     initialValues: {
@@ -28,6 +28,29 @@ const LoginForm = (props) => {
     onSubmit: async values => {
       try {
         const { data } = await login({
+          variables: { ...values}
+        });
+  
+        console.log(data);
+  
+        const token = await data.login.token;
+        dispatch(authActions.login());
+        Auth.login(token);
+        navigate('/profile', { replace: true });
+      } catch (err) {
+        console.error(err);
+      }
+    },
+  })
+
+  const registerForm = useFormik({
+    initialValues: {
+      username: '',
+      password: '',
+    },
+    onSubmit: async values => {
+      try {
+        const data = await login({
           variables: { ...values}
         });
   
@@ -77,7 +100,7 @@ const LoginForm = (props) => {
     switch (currentView) {
       case 'signUp':
         return (
-          <form onSubmit={data}>
+          <form>
             <h2>Sign Up!</h2>
             <fieldset>
               <legend>Create Account</legend>
@@ -88,6 +111,7 @@ const LoginForm = (props) => {
                     type="text"
                     id="username"
                     onChange={handleChange}
+                    value={registerForm}
                     required
                   />
                 </li>
