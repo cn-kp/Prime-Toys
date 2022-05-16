@@ -24,4 +24,13 @@ export const ADD_TOY = gql`
       }
     }
   }
+}
+`;
+
+export const REMOVE_TOY = gql`
+  mutation RemoveToy($id: ID) {
+    removeToy(_id: $id) {
+      _id
+    }
+  }
 `;
