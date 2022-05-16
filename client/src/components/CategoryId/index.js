@@ -1,5 +1,5 @@
 import React from "react";
-// import "./categoryOptions.scss";
+import "./CategoryId.scss";
 
 export default function CategoryOptions(data) {
 

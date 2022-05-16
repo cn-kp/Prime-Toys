@@ -14,21 +14,14 @@ import './reset.scss';
 import './App.scss';
 
 // Pages
-<<<<<<< HEAD
 import Home from "./pages/home";
 import LoginForm from "./pages/login";
 import Profile from "./pages/profile"
 import Listings from "./pages/listings"
 import {StoreProvider} from "./utils/GlobalState"
-=======
-import Home from './pages/home';
-import LoginForm from './pages/login';
-import Profile from './pages/profile';
-import Listings from './pages/listings';
->>>>>>> main
 
 // Components
-import Navbar from './components/Navbar';
+import Navbar from './components/navbar';
 import Footer from './components/Footer';
 // import Layout from "./components/layout/layout"
 

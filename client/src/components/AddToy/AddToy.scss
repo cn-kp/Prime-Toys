@@ -1,10 +1,57 @@
-@import "~bootstrap/scss/bootstrap";
+@import "../../variables.scss";
 
-// .modal-container{
-//     text-align: center;
+.toy-form {
+  // background-color:$red;
+  border: 2px solid $red;
+  height: 100%;
+  display: block;
+  align-items: center;
+  line-height: 1.6;
+  border-radius:0.5em;
+  box-shadow: 3px 4px 5px $copper;
+  h1 {
+    font-size: 2rem;
+  }
+  .input-fields {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 1rem;
+  }
+  input {
+    // box-sizing: border-box;
+    width: auto;
+    border: 2px solid $biege;
+    &:hover {
+      transform: scale(110%);
+      transition: 0.2s transform ease-out;
+    }
+  }
+  .submit-btn {
+    background: none;
+    border: 1px solid $red;
+    color: $red;
 
-//     .add-toy-form{
-//         display:flex !important;
-//         align-items: center !important;
-//     }
-// }
+    &:hover {
+      background: $red;
+      opacity: 0.8;
+      color: black;
+    }
+  }
+  select {
+    cursor: pointer;
+    display: block;
+    position: relative;
+    color:$red;
+    width: auto;
+    height: 1.5rem;
+    line-height: inherit;
+    outline: none;
+  }
+  .submit-btn-container{
+      margin-bottom:0;
+      padding: 1rem 0 0 0;
+      display: flex;
+      justify-content:center;
+  }
+}
