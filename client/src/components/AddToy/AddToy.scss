@@ -1,11 +1,4 @@
-<<<<<<< HEAD
 @import '../../variables.scss';
-
-.add-toy-form {
-  display: flex;
-  flex-direction: column;
-=======
-@import "../../variables.scss";
 
 .toy-form {
   // background-color:$red;
@@ -14,7 +7,7 @@
   display: block;
   align-items: center;
   line-height: 1.6;
-  border-radius:0.5em;
+  border-radius: 0.5em;
   box-shadow: 3px 4px 5px $copper;
   h1 {
     font-size: 2rem;
@@ -49,17 +42,16 @@
     cursor: pointer;
     display: block;
     position: relative;
-    color:$red;
+    color: $red;
     width: auto;
     height: 1.5rem;
     line-height: inherit;
     outline: none;
   }
-  .submit-btn-container{
-      margin-bottom:0;
-      padding: 1rem 0 0 0;
-      display: flex;
-      justify-content:center;
+  .submit-btn-container {
+    margin-bottom: 0;
+    padding: 1rem 0 0 0;
+    display: flex;
+    justify-content: center;
   }
->>>>>>> main
 }
