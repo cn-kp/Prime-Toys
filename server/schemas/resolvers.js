@@ -32,8 +32,6 @@ const resolvers = {
   Mutation: {
     addUser: async (parent, { username, email, password }) => {
       const user = await User.create({ username, email, password });
-      // return user;
-      // //  Disabling this part of mutation until JWT authentication is setup.
       const token = signToken(user);
       return { token, user };
     },
