@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
+import { useFormik } from 'formik';
+
+
 import { useMutation } from '@apollo/client';
 import { LOGIN_USER } from '../utils/mutations';
 import { authActions } from '../slices/auth';
@@ -13,21 +16,37 @@ const LoginForm = (props) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const [formState, setFormState] = useState({
-    username: '',
-    password: '',
-  });
   const [currentView, setCurrentView] = useState('logIn');
 
   const [login, { error, data }] = useMutation(LOGIN_USER);
+
+  const loginForm = useFormik({
+    initialValues: {
+      username: '',
+      password: '',
+    },
+    onSubmit: async values => {
+      try {
+        const { data } = await login({
+          variables: { ...values}
+        });
+  
+        console.log(data);
+  
+        const token = await data.login.token;
+        dispatch(authActions.login());
+        Auth.login(token);
+        navigate('/profile', { replace: true });
+      } catch (err) {
+        console.error(err);
+      }
+    },
+  })
 
   const handleChange = (event) => {
     const { id, value } = event.target;
     console.log(event.target);
 
-    setFormState((prevState) => {
-      return { ...prevState, [id]: value };
-    });
   };
 
   // submit form
@@ -36,7 +55,7 @@ const LoginForm = (props) => {
 
     try {
       const { data } = await login({
-        variables: { ...formState },
+      
       });
 
       console.log(data);
@@ -95,7 +114,7 @@ const LoginForm = (props) => {
         );
       case 'logIn':
         return (
-          <form onSubmit={handleFormSubmit}>
+          <form onSubmit={loginForm.handleSubmit}>
             <h2>Welcome Back!</h2>
             <fieldset>
               <legend>Log In</legend>
@@ -105,7 +124,9 @@ const LoginForm = (props) => {
                   <input
                     type="text"
                     id="username"
-                    onChange={handleChange}
+                    name="username"
+                    onChange={loginForm.handleChange}
+                    value={loginForm.values.username}
                     placeholder="Username"
                     required
                   />
@@ -115,7 +136,9 @@ const LoginForm = (props) => {
                   <input
                     type="password"
                     id="password"
-                    onChange={handleChange}
+                    name="password"
+                    onChange={loginForm.handleChange}
+                    value={loginForm.values.password}
                     required
                   />
                 </li>
