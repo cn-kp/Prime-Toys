@@ -10,9 +10,9 @@ const Navbar = (props) => {
 
   const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
 
-  const dispatch = useDispatch();
-
   console.log(isLoggedIn);
+
+  const dispatch = useDispatch();
 
   const handleToggle = () => {
     setNavbarOpen((prev) => !prev);
@@ -44,14 +44,18 @@ const Navbar = (props) => {
           </button>
           <ul className={`nav-items ${navbarOpen ? ' showMenu' : ''}`}>
             <li>
-              <NavLink to="/" activeClassName="active-link" onClick={closeMenu}>
+              <NavLink
+                to="/"
+                className={({ isActive }) => (isActive ? ' activated' : '')}
+                onClick={closeMenu}
+              >
                 Home
               </NavLink>
             </li>
             <li>
               <NavLink
                 to="/profile"
-                activeClassName="active-link"
+                className={({ isActive }) => (isActive ? 'activated' : '')}
                 onClick={closeMenu}
               >
                 Profile
@@ -60,7 +64,7 @@ const Navbar = (props) => {
             <li>
               <NavLink
                 to="/listings"
-                activeClassName="active-link"
+                className={({ isActive }) => (isActive ? 'activated' : '')}
                 onClick={closeMenu}
               >
                 Listings
@@ -91,14 +95,18 @@ const Navbar = (props) => {
           </button>
           <ul className={`nav-items ${navbarOpen ? ' showMenu' : ''}`}>
             <li>
-              <NavLink to="/" activeClassName="active-link" onClick={closeMenu}>
+              <NavLink
+                to="/"
+                className={({ isActive }) => (isActive ? 'activated' : '')}
+                onClick={closeMenu}
+              >
                 Home
               </NavLink>
             </li>
             <li>
               <NavLink
                 to="/listings"
-                activeClassName="active-link"
+                className={({ isActive }) => (isActive ? 'activated' : '')}
                 onClick={closeMenu}
               >
                 Listings
@@ -107,7 +115,7 @@ const Navbar = (props) => {
             <li>
               <NavLink
                 to="/login"
-                activeClassName="active-link"
+                className={({ isActive }) => (isActive ? 'activated' : '')}
                 onClick={closeMenu}
               >
                 Login

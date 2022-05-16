@@ -37,7 +37,9 @@ const LoginForm = (props) => {
         variables: { ...formState },
       });
 
+      const token = await data.login.token;
       dispatch(authActions.login());
+      Auth.login(token);
       navigate('/profile', { replace: true });
     } catch (err) {
       console.error(err);

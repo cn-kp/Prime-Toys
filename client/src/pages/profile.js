@@ -16,7 +16,7 @@ export default function Profile() {
 
   if (data) {
     user = data.user.listings;
-    // console.log(user)
+    console.log(user);
   } else {
     user = [];
   }
@@ -38,9 +38,7 @@ export default function Profile() {
           ))}
         </div>
       ) : (
-        <div className="sign-in-prompt">
-          <Login />
-        </div>
+        <></>
       )}
     </div>
   );
