@@ -1,13 +1,14 @@
-const { AuthenticationError } = require('apollo-server-express');
-const { User, Toy, Category } = require('../models');
-const { signToken } = require('../utils/auth');
+const { AuthenticationError } = require("apollo-server-express");
+const { User, Toy, Category } = require("../models");
+const { signToken } = require("../utils/auth");
 
 const resolvers = {
   Query: {
     user: async (parent, args, context) => {
       const user = await User.findById(context.user._id).populate({
-        path: 'listings',
+        path: "listings",
       });
+
       return user;
     },
     categories: async () => {
@@ -26,14 +27,12 @@ const resolvers = {
         };
       }
 
-      return await Toy.find(params).populate('category');
+      return await Toy.find(params).populate("category");
     },
   },
   Mutation: {
-    addUser: async (parent, { username, email, password }) => {
-      const user = await User.create({ username, email, password });
-      // return user;
-      // //  Disabling this part of mutation until JWT authentication is setup.
+    addUser: async (parent, { input }) => {
+      const user = await User.create({ ...input });
       const token = signToken(user);
       return { token, user };
     },
@@ -41,13 +40,13 @@ const resolvers = {
       const user = await User.findOne({ username });
 
       if (!user) {
-        throw new AuthenticationError('No user found with this username');
+        throw new AuthenticationError("No user found with this username");
       }
 
       const correctPw = await user.isCorrectPassword(password);
 
       if (!correctPw) {
-        throw new AuthenticationError('Incorrect credentials');
+        throw new AuthenticationError("Incorrect credentials");
       }
 
       const token = signToken(user);

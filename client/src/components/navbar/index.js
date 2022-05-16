@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { NavLink, useNavigate } from 'react-router-dom';
+import { Link, NavLink, useNavigate } from 'react-router-dom';
 import Auth from '../../utils/auth';
 import { authActions } from '../../slices/auth';
 import './navbar.scss';
@@ -11,6 +11,7 @@ const Navbar = (props) => {
   const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
 
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const handleToggle = () => {
     setNavbarOpen((prev) => !prev);
@@ -30,7 +31,10 @@ const Navbar = (props) => {
     return (
       <nav>
         <div className="navbar">
-          <div className="title-container">
+          <div
+            className="title-container"
+            onClick={() => navigate('/', { replace: true })}
+          >
             <h2 className="header-title">Prime Toys</h2>
           </div>
           <button className="btn" onClick={handleToggle}>
@@ -69,7 +73,10 @@ const Navbar = (props) => {
     return (
       <nav>
         <div className="navbar">
-          <div className="title-container">
+          <div
+            className="title-container"
+            onClick={() => navigate('/', { replace: true })}
+          >
             <h2 className="header-title">Prime Toys</h2>
           </div>
           <button className="btn" onClick={handleToggle}>
