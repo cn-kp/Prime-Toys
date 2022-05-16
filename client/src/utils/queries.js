@@ -7,6 +7,8 @@ export const QUERY_ALL_TOYS = gql`
       name
       description
       image
+      createdAt
+      isFree
       category {
         name
       }
@@ -24,6 +26,8 @@ export const QUERY_USER = gql`
         name
         description
         image
+        createdAt
+        isFree
         category {
           name
         }
@@ -48,6 +52,8 @@ export const QUERY_USER_TOYS = gql`
       name
       description
       image
+      createdAt
+      isFree
       category {
         name
       }
