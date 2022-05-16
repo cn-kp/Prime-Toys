@@ -1,3 +1,16 @@
+@import '../variables.scss';
+
+.profile-container {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr auto;
+
+  .add-toy-form-container {
+    margin: 0 auto;
+    padding: $padding;
+  }
+}
+
 .sign-in-prompt {
   display: flex;
   justify-content: center;

@@ -1,27 +1,32 @@
 import React, { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
 import { LOGIN_USER } from '../utils/mutations';
+import { authActions } from '../slices/auth';
 import './login.scss';
 
 import Auth from '../utils/auth';
+import { render } from 'react-dom';
 
 const LoginForm = (props) => {
-  // Login component animation
-  const [activePanel, setActivePanel] = useState(false);
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
 
-  // Form State
-  const [formState, setFormState] = useState({ email: '', password: '' });
+  const [formState, setFormState] = useState({
+    username: '',
+    password: '',
+  });
+  const [currentView, setCurrentView] = useState('logIn');
+
   const [login, { error, data }] = useMutation(LOGIN_USER);
 
-  const navigate = useNavigate();
-
   const handleChange = (event) => {
-    const { name, value } = event.target;
+    const { id, value } = event.target;
+    console.log(event.target);
 
-    setFormState({
-      ...formState,
-      [name]: value,
+    setFormState((prevState) => {
+      return { ...prevState, [id]: value };
     });
   };
 
@@ -34,175 +39,126 @@ const LoginForm = (props) => {
         variables: { ...formState },
       });
 
-      Auth.login(data.login.token);
+      console.log(data);
+
+      const token = await data.login.token;
+      dispatch(authActions.login());
+      Auth.login(token);
       navigate('/profile', { replace: true });
     } catch (err) {
       console.error(err);
     }
   };
 
-  return (
-    <section className="wrapper--login">
-      <div
-        className={
-          activePanel
-            ? 'container--login--right-panel-active'
-            : 'container--login'
-        }
-      >
-        <div className="form_container sign_in">
-          {data ? (
-            <p>
-              Success! You may now head{' '}
-              <Link to="/">back to the homepage.</Link>
-            </p>
-          ) : (
-            <form onSubmit={handleFormSubmit}>
-              <h1 className="beige_text">Log In To Your Account</h1>
+  const changeView = (view) => {
+    setCurrentView(view);
+  };
 
-              <div className="social_icons">
-                <p className="login-options">
-                  Or login with Facebook or Google
-                </p>
-                <a href="/">
-                  <i className="fa-brands fa-facebook-f"></i>
-                </a>
-                <a href="/">
-                  <i className="fa-brands fa-google"></i>
-                </a>
-              </div>
-              <h6 className="beige_text">Or enter your login details</h6>
-              <div className="email icon">
-                <input
-                  type="text"
-                  id="email"
-                  name="email"
-                  placeholder="Email Address"
-                  value={formState.email}
-                  onChange={handleChange}
-                />
-                <i className="fa-solid fa-envelope"></i>
-              </div>
-              <div onSubmit={handleFormSubmit} className="password icon">
-                <input
-                  type="password"
-                  id="password_up"
-                  name="password"
-                  placeholder="Password"
-                  value={formState.password}
-                  onChange={handleChange}
-                />
-                <i className="fa-solid fa-lock"></i>
-                <i className="show fas fa-eye-slash"></i>
-              </div>
-              <div className="remember beige_text">
-                <input type="checkbox" id="remember" />
-                <h5>Remember me</h5>
-              </div>
-              <div className="submit">
-                <button
-                  id="login-option_btn"
-                  type="submit"
-                  className="overlay_button"
-                >
-                  Log In
-                </button>
-              </div>
-            </form>
-          )}
-
-          {error && (
-            <div className="my-3 p-3 bg-danger text-white">{error.message}</div>
-          )}
-        </div>
-        <div className="form_container sign_up">
-          <form action="" method="POST">
-            <h1 className="beige_text">Create an Account</h1>
-            <div className="social_icons">
-              <a href="/">
-                <i className="fa-brands fa-facebook-f"></i>
-              </a>
-              <a href="/">
-                <i className="fa-brands fa-google"></i>
-              </a>
-            </div>
-            <h6 className="beige_text">Or enter your personal details</h6>
-            <div className="user icon">
-              <input
-                type="text"
-                id="user"
-                name="user"
-                placeholder="Username"
-                required
-              />
-              <i className="fa-solid fa-user"></i>
-            </div>
-            <div className="email icon">
-              <input
-                type="text"
-                id="email"
-                name="email"
-                placeholder="Email address"
-                required
-              />
-              <i className="fa-solid fa-envelope"></i>
-            </div>
-            <div className="password icon">
-              <input
-                type="password"
-                id="password"
-                name="password"
-                placeholder="Password"
-                required
-              />
-              <i className="fa-solid fa-lock"></i>
-              <i className="show fas fa-eye-slash"></i>
-            </div>
-            <div className="submit">
-              <button
-                id="btnin"
-                name="signup"
-                type="submit"
-                className="overlay_button"
-              >
-                Sign up
-              </button>
-            </div>
+  const renderSwitch = (currentView) => {
+    switch (currentView) {
+      case 'signUp':
+        return (
+          <form onSubmit={data}>
+            <h2>Sign Up!</h2>
+            <fieldset>
+              <legend>Create Account</legend>
+              <ul>
+                <li>
+                  <label htmlFor="username">Username:</label>
+                  <input
+                    type="text"
+                    id="username"
+                    onChange={handleChange}
+                    required
+                  />
+                </li>
+                <li>
+                  <label htmlFor="email">Email:</label>
+                  <input type="email" id="email" required />
+                </li>
+                <li>
+                  <label htmlFor="password">Password:</label>
+                  <input
+                    type="password"
+                    id="password"
+                    onChange={handleChange}
+                    required
+                  />
+                </li>
+              </ul>
+            </fieldset>
+            <button>Submit</button>
+            <button type="button" onClick={() => changeView('logIn')}>
+              Have an Account?
+            </button>
           </form>
-        </div>
-        <div className="overlay_container">
-          <div className="overlay">
-            <div className="overlay_panel overlay_left">
-              <h1>Welcome Back!</h1>
-              <p>
-                Please login to your Prime Toys Account to access our website
-              </p>
-              <button
-                id="signIn"
-                type="button"
-                className="overlay_button"
-                onClick={() => setActivePanel(!activePanel)}
-              >
-                Log In
-              </button>
-            </div>
-            <div className="overlay_panel overlay_right">
-              <h1>Don't Have an Account?</h1>
-              <p>Click Sign Up to create a new Prime Toys account</p>
-              <button
-                id="signUp"
-                type="button"
-                className="overlay_button"
-                onClick={() => setActivePanel(!activePanel)}
-              >
-                Sign Up
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-  );
+        );
+      case 'logIn':
+        return (
+          <form onSubmit={handleFormSubmit}>
+            <h2>Welcome Back!</h2>
+            <fieldset>
+              <legend>Log In</legend>
+              <ul>
+                <li>
+                  <label htmlFor="username">Username:</label>
+                  <input
+                    type="text"
+                    id="username"
+                    onChange={handleChange}
+                    placeholder="Username"
+                    required
+                  />
+                </li>
+                <li>
+                  <label htmlFor="password">Password:</label>
+                  <input
+                    type="password"
+                    id="password"
+                    onChange={handleChange}
+                    required
+                  />
+                </li>
+                <li>
+                  <i />
+                  <p onClick={() => changeView('PWReset')}>Forgot Password?</p>
+                </li>
+              </ul>
+            </fieldset>
+            <button>Login</button>
+            <button type="button" onClick={() => changeView('signUp')}>
+              Create an Account
+            </button>
+          </form>
+        );
+      case 'PWReset':
+        return (
+          <form onSubmit={handleFormSubmit}>
+            <h2>Reset Password</h2>
+            <fieldset>
+              <legend>Password Reset</legend>
+              <ul>
+                <li>
+                  <em>A reset link will be sent to your inbox!</em>
+                </li>
+                <li>
+                  <label htmlFor="email">Email:</label>
+                  <input type="email" id="email" required />
+                </li>
+              </ul>
+            </fieldset>
+            <button>Send Reset Link</button>
+            <button type="button" onClick={() => changeView('logIn')}>
+              Go Back
+            </button>
+          </form>
+        );
+      default:
+        break;
+    }
+  };
+
+  return <section id="entry-page">{renderSwitch(currentView)}</section>;
 };
 
 export default LoginForm;
