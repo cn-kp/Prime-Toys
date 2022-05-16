@@ -11,7 +11,7 @@ import { Button, Modal } from "react-bootstrap";
 import CategoryOptions from "../CategoryId";
 
 const AddToy = (data) => {
-  const [showModal, setShowModal] = useState(false);
+  // const [showModal, setShowModal] = useState(false);
   const [toyData, setToyData] = useState({
     name: "",
     description: "",
@@ -19,19 +19,19 @@ const AddToy = (data) => {
     category: { _id: "" },
   });
 
-  const [categoryName, setCategoryName] = useState({ category: "" });
+  // const [categoryName, setCategoryName] = useState({ category: "" });
 
-  const modalClose = () => setShowModal(false);
-  const modalShow = () => setShowModal(true);
+  // const modalClose = () => setShowModal(false);
+  // const modalShow = () => setShowModal(true);
 
   const handleAddToy = (event) => {
     const { name, value } = event.target;
     console.log(value);
     setToyData({ ...toyData, [name]: value });
-    console.log(toyData);
+    // console.log(toyData);
   };
   let categoryData = data.data;
-  console.log(categoryData);
+  // console.log(categoryData);
 
   // const findCategoryId = (event) => {
   //   event.preventDefault();
@@ -63,9 +63,9 @@ const AddToy = (data) => {
           },
         },
       });
-      console.log(toyMutationResponse);
+      // console.log(toyMutationResponse);
     } catch (err) {
-      console.log(err);
+      // console.log(err);
     }
 
     setToyData({ name: "", description: "", image: "",category: { _id: "" } });

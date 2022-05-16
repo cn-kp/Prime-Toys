@@ -47,7 +47,7 @@ const typeDefs = gql`
       description: String!
       image: String!
     ): Toy
-    removeToy(_id: ID!): Toy
+    removeToy(_id: ID): Toy
   }
 `;
 

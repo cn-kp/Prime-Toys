@@ -38,6 +38,7 @@ export default function Profile() {
           {user.map((listing) => (
             <ToyCards
               key={listing._id}
+              id={listing._id}
               name={listing.name}
               description={listing.description}
               image={listing.image}
