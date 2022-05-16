@@ -24,7 +24,6 @@ export const ADD_TOY = gql`
       }
     }
   }
-}
 `;
 
 export const REMOVE_TOY = gql`
