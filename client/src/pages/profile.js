@@ -6,8 +6,6 @@ import './profile.scss';
 import AddToy from '../components/AddToy';
 import ToyCards from '../components/ToyCard';
 
-import Login from './login';
-
 import { QUERY_USER, QUERY_CATEGORY } from '../utils/queries';
 
 export default function Profile() {
@@ -38,7 +36,7 @@ export default function Profile() {
           ))}
         </div>
       ) : (
-        <></>
+        <>Add some Toys</>
       )}
     </div>
   );

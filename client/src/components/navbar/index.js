@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import Auth from '../../utils/auth';
 import { authActions } from '../../slices/auth';
 import './navbar.scss';
@@ -9,8 +9,6 @@ const Navbar = (props) => {
   const [navbarOpen, setNavbarOpen] = useState(false);
 
   const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
-
-  console.log(isLoggedIn);
 
   const dispatch = useDispatch();
 
@@ -22,10 +20,10 @@ const Navbar = (props) => {
     setNavbarOpen(false);
   };
 
-  const logOut = () => {
+  const logOut = async () => {
     closeMenu();
     Auth.logout();
-    dispatch(authActions.logout);
+    dispatch(authActions.logout());
   };
 
   if (isLoggedIn) {
@@ -44,34 +42,22 @@ const Navbar = (props) => {
           </button>
           <ul className={`nav-items ${navbarOpen ? ' showMenu' : ''}`}>
             <li>
-              <NavLink
-                to="/"
-                className={({ isActive }) => (isActive ? ' activated' : '')}
-                onClick={closeMenu}
-              >
+              <NavLink to="/" onClick={closeMenu}>
                 Home
               </NavLink>
             </li>
             <li>
-              <NavLink
-                to="/profile"
-                className={({ isActive }) => (isActive ? 'activated' : '')}
-                onClick={closeMenu}
-              >
+              <NavLink to="/profile" onClick={closeMenu}>
                 Profile
               </NavLink>
             </li>
             <li>
-              <NavLink
-                to="/listings"
-                className={({ isActive }) => (isActive ? 'activated' : '')}
-                onClick={closeMenu}
-              >
+              <NavLink to="/listings" onClick={closeMenu}>
                 Listings
               </NavLink>
             </li>
             <li>
-              <NavLink to="/" onClick={logOut}>
+              <NavLink onClick={logOut} to="/">
                 Logout
               </NavLink>
             </li>
@@ -95,29 +81,17 @@ const Navbar = (props) => {
           </button>
           <ul className={`nav-items ${navbarOpen ? ' showMenu' : ''}`}>
             <li>
-              <NavLink
-                to="/"
-                className={({ isActive }) => (isActive ? 'activated' : '')}
-                onClick={closeMenu}
-              >
+              <NavLink to="/" onClick={closeMenu}>
                 Home
               </NavLink>
             </li>
             <li>
-              <NavLink
-                to="/listings"
-                className={({ isActive }) => (isActive ? 'activated' : '')}
-                onClick={closeMenu}
-              >
+              <NavLink to="/listings" onClick={closeMenu}>
                 Listings
               </NavLink>
             </li>
             <li>
-              <NavLink
-                to="/login"
-                className={({ isActive }) => (isActive ? 'activated' : '')}
-                onClick={closeMenu}
-              >
+              <NavLink to="/login" onClick={closeMenu}>
                 Login
               </NavLink>
             </li>

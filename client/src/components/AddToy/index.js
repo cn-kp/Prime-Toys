@@ -63,7 +63,7 @@ const AddToy = (data) => {
       </div>
       <form onSubmit={submitToyHandler}>
         <div className="input-fields">
-          <label for="toyName" className="name-label">
+          <label htmlFor="toyName" className="name-label">
             Name:
           </label>
           <input
@@ -74,7 +74,7 @@ const AddToy = (data) => {
             value={toyData.name}
             required
           ></input>
-          <label for="toyDescription">Description:</label>
+          <label htmlFor="toyDescription">Description:</label>
           <input
             type="text"
             name="description"
@@ -82,7 +82,7 @@ const AddToy = (data) => {
             value={toyData.description}
             required
           ></input>
-          <label for="toyImage">Image:</label>
+          <label htmlFor="toyImage">Image:</label>
           <input
             type="text"
             name="image"
