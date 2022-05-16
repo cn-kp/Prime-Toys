@@ -23,7 +23,7 @@ import Profile from './pages/profile';
 import Listings from './pages/listings';
 
 // Components
-import Navbar from './components/Navbar';
+import Navbar from './components/navbar';
 import Footer from './components/Footer';
 // import Layout from "./components/layout/layout"
 
