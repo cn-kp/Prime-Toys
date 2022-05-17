@@ -62,6 +62,7 @@ export default function ToyCard(card) {
             <p className="toy-description">{category}</p>
           </div>
           <div className="text-float-right">
+            <p className="post-time">Posted 1 hr ago</p>
             {isFree ? (
               <p className="free-status">Free</p>
             ) : (
