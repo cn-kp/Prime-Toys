@@ -1,25 +1,28 @@
-@import '../../variables.scss';
+@import "../../variables.scss";
 
 .card {
   border-radius: $border-radius;
   box-shadow: $box-shadow;
   overflow: hidden;
   background-color: rgba(255, 255, 255, 0.411);
+  width: 100%;
+  margin: 0 auto;
 
-  &:hover{
+  &:hover {
     background-color: #dfdbdb;
   }
   .card-image {
     overflow: hidden;
     padding-bottom: 0;
     margin-bottom: 0.5rem;
+    height: 300px;
 
     img {
       width: 100%;
       aspect-ratio: 16 / 9;
-      object-fit: contain;
+      object-fit: scale-down;
       object-position: center;
-      min-height: 450px;
+      min-height: 300px;
 
       &:hover {
         transform: scale(102%);
@@ -29,21 +32,55 @@
   }
 
   .card-body {
-    padding: 0.5rem 1rem;
+    padding: 0.5rem 0.75rem;
     padding-bottom: 0.4rem;
     position: relative;
     height: 90px;
 
+    .toy-name {
+      padding-bottom: 0.5rem;
+      font-size: 0.8rem;
+    }
     .card-text {
-      .toy-name {
-        padding-bottom: 0.5rem;
-        font-size: 0.8rem;
+      .text-float-left {
+        width: 50%;
+        float: left;
+
+        .toy-description {
+          font-size: 0.8rem;
+          font-weight: 300;
+        }
       }
-      .toy-description {
-        font-size: 0.8rem;
-        font-weight: 300;
+
+      .text-float-right {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        margin-right: 1.5rem;
+        margin-bottom: 0.75rem;
+        width: 50%;
+        float: right;
+        .post-time {
+          text-align: end;
+          font-size: 0.8rem;
+          margin-bottom: 1.1rem;
+          font-weight: 300;
+        }
+        .free-status {
+          text-align: end;
+          font-size: 1.2rem;
+          color: $red;
+          font-weight: 500;
+
+          &.tradeable {
+            color: $newblue;
+            font-weight: 400;
+            font-size: 1.1rem;
+          }
+        }
       }
     }
+
     .card-footer {
       margin-top: 1rem;
       margin-bottom: 0.25em;
