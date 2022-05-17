@@ -6,14 +6,12 @@ import { REMOVE_TOY } from "../../utils/mutations";
 import "./ToyCard.scss";
 
 export default function ToyCard(card) {
-  const { id, name, description, image, category } = card;
-  // console.log(id);
+  const { id, name, description, image, category, isFree } = card;
   const [RemoveToy] = useMutation(REMOVE_TOY);
 
   const removeToyHandler = async (event) => {
     event.preventDefault();
     const { name, value } = event.target;
-    console.log(value);
     try {
       const removeToyMutation = await RemoveToy({
         variables: {
@@ -61,6 +59,7 @@ export default function ToyCard(card) {
         <div className="card-text">
           <p className="toy-name">{name}</p>
           <p className="toy-description">{category}</p>
+          {isFree ? (<p className="is Free">This item is free</p>) : (<p>This item is up for trade</p>)}
         </div>
         <ProfileCardButtons />
       </div>

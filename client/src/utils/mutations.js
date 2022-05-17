@@ -31,6 +31,7 @@ export const ADD_TOY = gql`
       name
       description
       image
+      isFree
       category {
         _id
       }

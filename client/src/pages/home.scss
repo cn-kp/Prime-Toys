@@ -1,21 +1,51 @@
-@import '../variables.scss';
+@import "../variables.scss";
 
 .home {
   display: flex;
   justify-content: center;
   align-items: center;
   min-height: 80vh;
+
+  background-image: url("../../public/images/teddy-bear.jpg");
+  background-repeat: no-repeat;
+  width: auto;
+  background-size: cover;
+  opacity: 0.9;
 }
 
-.container--title {
+.container-title {
   padding: 1em;
   .title {
     font-size: 5em;
     padding-bottom: 0.3em;
     font-weight: 600;
     // margin-left: -0.2em;
+    color: aqua;
+    position: relative;
+
+    span {
+      color: rgb(191, 243, 69);
+    }
+    div {
+      left: 50%;
+    }
   }
 
+  button {
+    margin-right: 2rem;
+    align-items: center;
+    color: $red;
+    border: 1px solid $red;
+    padding: 0.5em 0.75em;
+    border-radius: $border-radius;
+    font-size: 1rem;
+    cursor: pointer;
+
+    &:hover {
+      background: $red;
+      color: #fff;
+    }
+  }
   .subtitle {
     font-size: 1.5em;
     font-weight: 300;
