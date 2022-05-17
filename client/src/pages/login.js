@@ -31,8 +31,6 @@ const LoginForm = (props) => {
           variables: { ...values },
         });
 
-        console.log(data);
-
         const token = await data.login.token;
         dispatch(authActions.login());
         Auth.login(token);
@@ -50,7 +48,6 @@ const LoginForm = (props) => {
       password: "",
     },
     onSubmit: async (values) => {
-      console.log(values);
       try {
         const data = await addUser({
           variables: { input: { ...values } },
@@ -65,29 +62,6 @@ const LoginForm = (props) => {
       }
     },
   });
-
-  const handleChange = (event) => {
-    const { id, value } = event.target;
-    console.log(event.target);
-  };
-
-  // submit form
-  const handleFormSubmit = async (event) => {
-    event.preventDefault();
-
-    try {
-      const { data } = await login({});
-
-      console.log(data);
-
-      const token = await data.login.token;
-      dispatch(authActions.login());
-      Auth.login(token);
-      navigate("/profile", { replace: true });
-    } catch (err) {
-      console.error(err);
-    }
-  };
 
   const changeView = (view) => {
     setCurrentView(view);

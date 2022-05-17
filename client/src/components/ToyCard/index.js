@@ -58,8 +58,16 @@ export default function ToyCard(card) {
       <div className="card-body">
         <div className="card-text">
           <p className="toy-name">{name}</p>
-          <p className="toy-description">{category}</p>
-          {isFree ? (<p className="is Free">This item is free</p>) : (<p>This item is up for trade</p>)}
+          <div className="text-float-left">
+            <p className="toy-description">{category}</p>
+          </div>
+          <div className="text-float-right">
+            {isFree ? (
+              <p className="free-status">Free</p>
+            ) : (
+              <p className="free-status tradeable">Tradeable</p>
+            )}
+          </div>
         </div>
         <ProfileCardButtons />
       </div>

@@ -12,22 +12,33 @@
   margin-right: 2rem;
   min-width: 5rem;
   padding-top: 2rem;
+  display: flex;
+  flex-direction: column;
   h2 {
     text-align: center;
+    padding-bottom: 1.5rem;
   }
-  button {
-    margin-right: 2rem;
-    align-items: center;
-    color: $red;
-    border: 1px solid $red;
-    padding: 0.5em 0.75em;
-    border-radius: $border-radius;
-    font-size: 1rem;
-    cursor: pointer;
 
-    &:active {
-      background: $red;
-      color: #fff;
+  .filter-btn-container {
+    margin: 0 auto;
+
+    > * {
+      margin-left: 1rem;
+    }
+    button {
+      margin-right: 2rem;
+      align-items: center;
+      color: $red;
+      border: 1px solid $red;
+      padding: 0.5em 0.75em;
+      border-radius: $border-radius;
+      font-size: 1rem;
+      cursor: pointer;
+
+      &:active {
+        background: $red;
+        color: #fff;
+      }
     }
   }
 }
@@ -36,7 +47,7 @@
   margin: 2em;
   display: grid;
   gap: 20px;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(375px, 1fr));
 
   @media (min-width: 980px) {
   }
@@ -44,7 +55,7 @@
 
 .wrapper {
   &--listings {
-    padding-left: 1em;
+    padding-right: 2rem;
   }
 }
 @media (min-width: 768px) {

@@ -1,12 +1,12 @@
-import React from 'react';
-import { useQuery } from '@apollo/client';
+import React from "react";
+import { useQuery } from "@apollo/client";
 
-import './profile.scss';
+import "./profile.scss";
 
-import AddToy from '../components/AddToy';
-import ToyCards from '../components/ToyCard';
+import AddToy from "../components/AddToy";
+import ToyCards from "../components/ToyCard";
 
-import { QUERY_USER, QUERY_CATEGORY } from '../utils/queries';
+import { QUERY_USER, QUERY_CATEGORY } from "../utils/queries";
 
 export default function Profile() {
   const { loading, data } = useQuery(QUERY_USER);
@@ -14,7 +14,6 @@ export default function Profile() {
 
   if (data) {
     user = data.user.listings;
-    console.log(user);
   } else {
     user = [];
   }
