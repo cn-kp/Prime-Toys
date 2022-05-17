@@ -8,16 +8,15 @@
 //   }
 // }
 
-
 .filter-container {
-  margin-right:2rem;
+  margin-right: 2rem;
   min-width: 5rem;
   padding-top: 2rem;
   h2 {
     text-align: center;
   }
   button {
-    margin-right:2rem;
+    margin-right: 2rem;
     align-items: center;
     color: $red;
     border: 1px solid $red;
@@ -28,7 +27,7 @@
 
     &:active {
       background: $red;
-      color:#fff;
+      color: #fff;
     }
   }
 }
@@ -48,9 +47,10 @@
     padding-left: 1em;
     padding-right: 1em;
 
-@media (min-width: 768px) {
-  .wrapper--listings {
-    padding: 0 1rem;
-
+    @media (min-width: 768px) {
+      .wrapper--listings {
+        padding: 0 1rem;
+      }
+    }
   }
 }
