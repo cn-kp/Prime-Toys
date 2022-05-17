@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const dateFormat = require('../utils/formateDate')
+const dateFormat = require('../utils/formateDate');
 
 const { Schema } = mongoose;
 
@@ -22,11 +22,15 @@ const toySchema = new Schema({
   },
   isFree: {
     type: Boolean,
-    default: true
+    default: false,
   },
   category: {
     type: Schema.Types.ObjectId,
     ref: 'Category',
+  },
+  condition: {
+    type: Schema.Types.ObjectId,
+    ref: 'Condition',
   },
 });
 
