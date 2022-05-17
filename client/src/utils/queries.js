@@ -48,7 +48,7 @@ export const QUERY_CATEGORY = gql`
   }
 `;
 
-export const QUERY_CONDITION = gql`
+export const QUERY_CONDITIONS = gql`
   query getConditions {
     conditions {
       _id

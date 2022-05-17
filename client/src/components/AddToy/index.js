@@ -3,6 +3,7 @@ import { useMutation } from '@apollo/client';
 import { ADD_TOY } from '../../utils/mutations';
 import { useQuery } from '@apollo/client';
 import CategoryData from '../CategoryId';
+import ConditionMenu from '../conditionMenu';
 
 import './AddToy.scss';
 
@@ -25,6 +26,8 @@ const AddToy = (data) => {
   } else {
     categoryData = [];
   }
+
+  console.log(categoryData[0].name);
 
   const handleAddToy = (event) => {
     const { name, value } = event.target;
