@@ -14,20 +14,8 @@ const resolvers = {
     categories: async () => {
       return await Category.find();
     },
-    toys: async (parent, { category, name }) => {
-      const params = {};
-
-      if (category) {
-        params.category = category;
-      }
-
-      if (name) {
-        params.name = {
-          $regex: name,
-        };
-      }
-
-      return await Toy.find(params).populate('category');
+    toys: async () => {
+      return await Toy.find().populate('category condition');
     },
     conditions: async () => {
       return await Condition.find();

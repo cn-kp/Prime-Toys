@@ -47,7 +47,7 @@ const typeDefs = gql`
   }
   type Query {
     categories: [Category]
-    toys(category: ID, name: String): [Toy]
+    toys: [Toy]
     user: User
     conditions: [Condition]
   }
