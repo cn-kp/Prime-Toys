@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useMutation } from '@apollo/client';
 import { ADD_TOY } from '../../utils/mutations';
 import { useQuery } from '@apollo/client';
-import Category from '../CategoryId';
+import CategoryData from '../CategoryId';
 
 import './AddToy.scss';
 
@@ -22,7 +22,6 @@ const AddToy = (data) => {
 
   if (data1) {
     categoryData = data1.categories;
-    // console.log(categoryData);
   } else {
     categoryData = [];
   }
@@ -36,7 +35,6 @@ const AddToy = (data) => {
 
   const submitToyHandler = async (event) => {
     event.preventDefault();
-    // const token = Auth.loggedIn() ? Auth.getToken() : null;
     try {
       const toyMutationResponse = await AddToy({
         variables: {
@@ -100,7 +98,7 @@ const AddToy = (data) => {
               required
             >
               {categoryData.map((category) => (
-                <Category
+                <CategoryData
                   key={category._id}
                   category={category.name}
                   id={category._id}

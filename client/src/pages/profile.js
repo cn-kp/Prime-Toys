@@ -26,15 +26,16 @@ export default function Profile() {
       </div>
       {user.length ? (
         <div className="card-grid">
-          {user.map((listing) => (
-            <ToyCards
-              key={listing._id}
-              id={listing._id}
-              name={listing.name}
-              description={listing.description}
-              image={listing.image}
-            />
-          ))}
+          {data &&
+            user.map((listing) => (
+              <ToyCards
+                key={listing._id}
+                id={listing._id}
+                name={listing.name}
+                description={listing.description}
+                image={listing.image}
+              />
+            ))}
         </div>
       ) : (
         <>Add some Toys</>

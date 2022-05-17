@@ -35,9 +35,13 @@ const typeDefs = gql`
     description: String
     image: String
     category: updateCategory
+    condition: updateCondition
     isFree: Boolean
   }
   input updateCategory {
+    _id: ID
+  }
+  input updateCondition {
     _id: ID
   }
   input addUser {

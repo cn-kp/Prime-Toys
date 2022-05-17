@@ -51,7 +51,7 @@ const resolvers = {
     addToy: async (parent, { input }, context) => {
       if (context.user) {
         const toy = await Toy.create({ ...input });
-        console.log(input);
+        console.log(toy);
 
         await User.findOneAndUpdate(
           { _id: context.user._id },

@@ -12,11 +12,14 @@ export const QUERY_ALL_TOYS = gql`
       category {
         name
       }
+      condition {
+        name
+      }
     }
   }
 `;
 export const QUERY_USER = gql`
-  {
+  query getUser {
     user {
       _id
       username
@@ -37,8 +40,17 @@ export const QUERY_USER = gql`
 `;
 
 export const QUERY_CATEGORY = gql`
-  {
+  query getCategories {
     categories {
+      _id
+      name
+    }
+  }
+`;
+
+export const QUERY_CONDITION = gql`
+  query getConditions {
+    conditions {
       _id
       name
     }
@@ -55,6 +67,9 @@ export const QUERY_USER_TOYS = gql`
       createdAt
       isFree
       category {
+        name
+      }
+      condition {
         name
       }
     }

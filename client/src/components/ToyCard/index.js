@@ -1,9 +1,9 @@
-import React, { useState } from "react";
-import { useMatch } from "react-router-dom";
-import { useMutation } from "@apollo/client";
-import { REMOVE_TOY } from "../../utils/mutations";
+import React, { useState } from 'react';
+import { useMatch } from 'react-router-dom';
+import { useMutation } from '@apollo/client';
+import { REMOVE_TOY } from '../../utils/mutations';
 
-import "./ToyCard.scss";
+import './ToyCard.scss';
 
 export default function ToyCard(card) {
   const { id, name, description, image, category } = card;
@@ -25,7 +25,7 @@ export default function ToyCard(card) {
     }
   };
   const ProfileCardButtons = () => {
-    const match = useMatch("/profile");
+    const match = useMatch('/profile');
 
     if (match) {
       return (
