@@ -58,7 +58,6 @@ function App() {
         <Router>
           <div className="grid">
             <Navbar />
-
             <main>
               <Routes>
                 <Route path="/" element={<Home />} />

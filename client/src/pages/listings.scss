@@ -1,4 +1,4 @@
-@import '../variables.scss';
+@import "../variables.scss";
 
 // .container {
 //   &--card {
@@ -7,6 +7,30 @@
 //     gap: 10px;
 //   }
 // }
+
+.filter-container {
+  margin-right:2rem;
+  min-width: 5rem;
+  padding-top: 2rem;
+  h2 {
+    text-align: center;
+  }
+  button {
+    margin-right:2rem;
+    align-items: center;
+    color: $red;
+    border: 1px solid $red;
+    padding: 0.5em 0.75em;
+    border-radius: $border-radius;
+    font-size: 1rem;
+    cursor: pointer;
+
+    &:active {
+      background: $red;
+      color:#fff;
+    }
+  }
+}
 
 .card-grid {
   margin: 2em;

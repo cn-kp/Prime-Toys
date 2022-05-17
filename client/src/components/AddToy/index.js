@@ -1,21 +1,23 @@
-import React, { useState } from 'react';
-import { useMutation } from '@apollo/client';
-import { ADD_TOY } from '../../utils/mutations';
-import { useQuery } from '@apollo/client';
-import Category from '../CategoryId';
+import React, { useState } from "react";
+import { useMutation } from "@apollo/client";
+import { ADD_TOY } from "../../utils/mutations";
+import { useQuery } from "@apollo/client";
+import Category from "../CategoryId";
 
-import './AddToy.scss';
+import "./AddToy.scss";
 
-import { QUERY_CATEGORY } from '../../utils/queries';
+import { QUERY_CATEGORY } from "../../utils/queries";
 
 const AddToy = (data) => {
-  const [categoryName, setCategoryName] = useState({ category: '' });
+  const [categoryName, setCategoryName] = useState({ category: "" });
   const [toyData, setToyData] = useState({
-    name: '',
-    description: '',
-    image: '',
-    category: { _id: '' },
+    name: "",
+    description: "",
+    image: "",
+    category: { _id: "" },
   });
+
+  const [isFree, setIsFree] = useState(true);
 
   const { loading: loading1, data: data1 } = useQuery(QUERY_CATEGORY);
   let categoryData;
@@ -26,6 +28,10 @@ const AddToy = (data) => {
   } else {
     categoryData = [];
   }
+
+  const handleIsFree = (event) => {
+    setIsFree(!isFree);
+  };
 
   const handleAddToy = (event) => {
     const { name, value } = event.target;
@@ -45,6 +51,7 @@ const AddToy = (data) => {
             description: toyData.description,
             image: toyData.image,
             category: { _id: toyData.category },
+            isFree: isFree,
           },
         },
       });
@@ -52,7 +59,7 @@ const AddToy = (data) => {
       console.error(err);
     }
 
-    setToyData({ name: '', description: '', image: '', category: { _id: '' } });
+    setToyData({ name: "", description: "", image: "", category: { _id: "" } });
   };
 
   return (
@@ -63,6 +70,14 @@ const AddToy = (data) => {
       </div>
       <form onSubmit={submitToyHandler}>
         <div className="input-fields">
+          <div className="listing-option">
+            <input type="radio" name="option" onClick={handleIsFree} /> list for free
+            <input type="radio" name="option" onClick={handleIsFree} /> list for trade
+          </div>
+          {/* <label className="switch">Up for Trade?
+          <input type="checkbox"onChange={handleIsFree}></input>
+          <span class="slider"></span>
+          </label> */}
           <label htmlFor="toyName" className="name-label">
             Name:
           </label>
