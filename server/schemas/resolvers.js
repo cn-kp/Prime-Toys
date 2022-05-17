@@ -1,12 +1,12 @@
-const { AuthenticationError } = require("apollo-server-express");
-const { User, Toy, Category } = require("../models");
-const { signToken } = require("../utils/auth");
+const { AuthenticationError } = require('apollo-server-express');
+const { User, Toy, Category, Condition } = require('../models');
+const { signToken } = require('../utils/auth');
 
 const resolvers = {
   Query: {
     user: async (parent, args, context) => {
       const user = await User.findById(context.user._id).populate({
-        path: "listings",
+        path: 'listings',
       });
 
       return user;
@@ -27,7 +27,10 @@ const resolvers = {
         };
       }
 
-      return await Toy.find(params).populate("category");
+      return await Toy.find(params).populate('category');
+    },
+    conditions: async () => {
+      return await Condition.find();
     },
   },
   Mutation: {
@@ -40,13 +43,13 @@ const resolvers = {
       const user = await User.findOne({ username });
 
       if (!user) {
-        throw new AuthenticationError("No user found with this username");
+        throw new AuthenticationError('No user found with this username');
       }
 
       const correctPw = await user.isCorrectPassword(password);
 
       if (!correctPw) {
-        throw new AuthenticationError("Incorrect credentials");
+        throw new AuthenticationError('Incorrect credentials');
       }
 
       const token = signToken(user);
