@@ -15,15 +15,17 @@ export default function Home() {
   return (
     <>
       <section className="home">
-        <div className="container-title">
-          <h1 className="title">
-            Prime <span>Toys</span>
-          </h1>
-          <h2 className="subtitle">Trade or donate your toys here</h2>
-          <div className="btn-container">
-            <button>
-              <NavLink to="/listings">Trade Now</NavLink>
-            </button>
+        <div className="hero-image">
+          <div className="container-title">
+            <h1 className="title">
+              Prime <span>Toys</span>
+            </h1>
+            <h2 className="subtitle">Trade or donate your toys here</h2>
+            <div className="btn-container">
+              <button>
+                <NavLink to="/listings">Trade Now</NavLink>
+              </button>
+            </div>
           </div>
         </div>
       </section>

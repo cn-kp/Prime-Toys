@@ -1,28 +1,32 @@
 @import "../variables.scss";
 
 .home {
-  display: flex;
-  justify-content: center;
-  align-items: center;
   min-height: 80vh;
 
-  background-image: url("../../public/images/teddy-bear.jpg");
-  background-repeat: no-repeat;
-  width: auto;
-  background-size: cover;
-  opacity: 0.9;
+  .hero-image {
+    background-image: url("../../public/images/barrett-ward-1qQx3LHaYGg-unsplash.jpg");
+    background-repeat: no-repeat;
+    height: 120%;
+    background-size: cover;
+    background-position: center;
+    opacity: 0.9;
+    position: relative;
+  }
 }
 
 .container-title {
   padding: 1em;
   margin-right: auto;
   margin-left: 1rem;
+  position: absolute;
+  top: 15%;
+
   .title {
     font-size: 5em;
     padding-bottom: 0.3em;
     font-weight: 600;
     // margin-left: -0.2em;
-    color: aqua;
+    color: $teal;
     position: relative;
 
     span {
@@ -32,8 +36,12 @@
       left: 50%;
     }
   }
+  .subtitle {
+    font-size: 1.5em;
+    font-weight: 300;
+  }
   .btn-container {
-    display:flex;
+    display: flex;
     flex-direction: column;
     button {
       margin-right: 2rem;
@@ -45,18 +53,12 @@
       font-size: 1rem;
       cursor: pointer;
       margin-top: 2rem;
-      margin-right: auto;
-      margin-left: auto;
+      max-width: 150px;
       &:hover {
         background: $red;
         color: #fff;
       }
     }
-  }
-  .subtitle {
-    font-size: 1.5em;
-    font-weight: 300;
-    text-align: center;
   }
 }
 
@@ -70,6 +72,6 @@
   }
 }
 
-.about-prime-toys{
-  height:20rem;
+.about-prime-toys {
+  height: 20rem;
 }
