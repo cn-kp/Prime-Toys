@@ -46,11 +46,18 @@
   &--listings {
     padding-left: 1em;
     padding-right: 1em;
+  }
+}
+@media (min-width: 768px) {
+  .wrapper--listings {
+    padding: 0 1rem;
+
 
     @media (min-width: 768px) {
       .wrapper--listings {
         padding: 0 1rem;
       }
     }
+
   }
 }

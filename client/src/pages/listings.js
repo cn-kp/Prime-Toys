@@ -20,7 +20,6 @@ export default function Listings() {
   
   useEffect(()=>{
     if (data){
-      console.log("---",data)
       setToyData(data.toys)
     }
   },[data])
