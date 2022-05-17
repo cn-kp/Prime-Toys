@@ -1,5 +1,5 @@
 const { AuthenticationError } = require('apollo-server-express');
-const { User, Toy, Category } = require('../models');
+const { User, Toy, Category, Condition } = require('../models');
 const { signToken } = require('../utils/auth');
 
 const resolvers = {
@@ -8,32 +8,22 @@ const resolvers = {
       const user = await User.findById(context.user._id).populate({
         path: 'listings',
       });
+
       return user;
     },
     categories: async () => {
       return await Category.find();
     },
-    toys: async (parent, { category, name }) => {
-      const params = {};
-
-      if (category) {
-        params.category = category;
-      }
-
-      if (name) {
-        params.name = {
-          $regex: name,
-        };
-      }
-
-      return await Toy.find(params).populate('category');
+    toys: async () => {
+      return await Toy.find().populate('category condition');
+    },
+    conditions: async () => {
+      return await Condition.find();
     },
   },
   Mutation: {
-    addUser: async (parent, { username, email, password }) => {
-      const user = await User.create({ username, email, password });
-      // return user;
-      // //  Disabling this part of mutation until JWT authentication is setup.
+    addUser: async (parent, { input }) => {
+      const user = await User.create({ ...input });
       const token = signToken(user);
       return { token, user };
     },
