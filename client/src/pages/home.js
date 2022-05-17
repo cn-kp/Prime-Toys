@@ -15,15 +15,17 @@ export default function Home() {
   return (
     <>
       <section className="home">
-        <div className="container-title">
-          <h1 className="title">
-            Prime <span>Toys</span>
-          </h1>
-          <h2 className="subtitle">Trade or donate your toys here</h2>
-          <div className="btn-container">
-            <button>
-              <NavLink to="/listings">Trade Now</NavLink>
-            </button>
+        <div className="hero-image">
+          <div className="container-title">
+            <h1 className="title">
+              Prime <span>Toys</span>
+            </h1>
+            <h2 className="subtitle">Trade or donate your toys here</h2>
+            <div className="btn-container">
+              <button>
+                <NavLink to="/listings">Trade Now</NavLink>
+              </button>
+            </div>
           </div>
         </div>
       </section>
@@ -33,11 +35,23 @@ export default function Home() {
           <h1>The One Stop Toy Site to donate or Trade your toys</h1>
           <h2>Connect with user near you to exchange your goods</h2>
         </div>
-        <h1>The One Stop Toy Site to donate or Trade your toys</h1>
+
+        <div className="about-trade-or-free">
+          <div className="about-image-trade">
+            <h2> Swap</h2>
+            <img src="/images/swap.png" alt="a logo symbolizing a swap"></img>
+          </div>
+          <div className="about-image-free">
+            <h2>Donate</h2>
+            <img
+              src="images/donate-toys.webp"
+              alt="a boxfilled with toys. donation is written the box label"
+            ></img>
+          </div>
+        </div>
       </div>
-      <br></br>
       <div className="recent-container">
-        <h1>Check out the recently listed toys</h1>
+        <h3>Check out the recently listed toys</h3>
         {toy.length ? (
           <div className="card-grid recent-card">
             {toy.map((toy) => (
