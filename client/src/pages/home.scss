@@ -2,11 +2,12 @@
 
 .home {
   min-height: 80vh;
+  margin-top: 6rem;
 
   .hero-image {
     background-image: url("../../public/images/barrett-ward-1qQx3LHaYGg-unsplash.jpg");
     background-repeat: no-repeat;
-    height: 120%;
+    height: 100%;
     background-size: cover;
     background-position: center;
     opacity: 0.9;
@@ -21,16 +22,21 @@
   position: absolute;
   top: 15%;
 
+  @media (min-width: 768px) {
+    top: 20%;
+    left: 5%;
+  }
+
   .title {
     font-size: 5em;
     padding-bottom: 0.3em;
     font-weight: 600;
     // margin-left: -0.2em;
-    color: $teal;
+    color: $newblue;
     position: relative;
 
     span {
-      color: rgb(191, 243, 69);
+      color: $lime;
     }
     div {
       left: 50%;
@@ -44,21 +50,35 @@
     display: flex;
     flex-direction: column;
     button {
+      background-color: $light;
       margin-right: 2rem;
       align-items: center;
-      color: $red;
-      border: 1px solid $red;
-      padding: 0.5em 0.75em;
+      padding: 0.8em 0.75em;
       border-radius: $border-radius;
       font-size: 1rem;
       cursor: pointer;
       margin-top: 2rem;
-      max-width: 150px;
+      max-width: 320px;
+      border: 1px solid $red;
       &:hover {
         background: $red;
         color: #fff;
+        border: 1px solid $pink;
       }
     }
+  }
+}
+
+.about-prime-toys {
+  padding: 3rem 1rem 1.5rem 1rem;
+
+  h1 {
+    padding-bottom: 2rem;
+    text-align: center;
+  }
+
+  h2 {
+    text-align: center;
   }
 }
 
@@ -66,12 +86,73 @@
   background-color: #fff;
   display: flex;
   flex-direction: column;
+
+  h3 {
+    padding: 3rem;
+    text-align: center;
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: $green;
+  }
   .recent-card {
     justify-content: center;
     grid-template-columns: repeat(auto-fill, minmax(300px, 25%));
+
+    @media (min-width: 768px) {
+      justify-content: center;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 25%));
+    }
   }
 }
 
-.about-prime-toys {
-  height: 20rem;
+.about-trade-or-free {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 100%));
+  padding-top: 3rem;
+
+  @media (min-width: 768px) {
+    grid-template-columns: repeat(auto-fill, minmax(300px, 50%));
+  }
+
+  > * {
+    padding-left: 2rem;
+    padding-bottom: 2rem;
+  }
+
+  * :last-child {
+    padding-bottom: 0;
+  }
+
+  .about-image-trade {
+    max-width: 300px;
+    position: relative;
+    margin: 0 auto;
+    h2 {
+      text-align: center;
+      font-weight: 500;
+      letter-spacing: 0.3rem;
+      font-size: 1.2rem;
+      color: $green;
+    }
+    img {
+      padding-top: 2rem;
+      width: 300px;
+    }
+  }
+  .about-image-free {
+    position: relative;
+    max-width: 300px;
+    text-align: center;
+    margin: 0 auto;
+    h2 {
+      font-weight: 500;
+      letter-spacing: 0.2rem;
+      font-size: 1.2rem;
+      color: $newblue;
+    }
+    img {
+      padding-top: 2rem;
+      width: 300px;
+    }
+  }
 }

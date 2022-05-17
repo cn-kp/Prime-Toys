@@ -35,11 +35,23 @@ export default function Home() {
           <h1>The One Stop Toy Site to donate or Trade your toys</h1>
           <h2>Connect with user near you to exchange your goods</h2>
         </div>
-        <h1>The One Stop Toy Site to donate or Trade your toys</h1>
+
+        <div className="about-trade-or-free">
+          <div className="about-image-trade">
+            <h2> Swap</h2>
+            <img src="/images/swap.png" alt="a logo symbolizing a swap"></img>
+          </div>
+          <div className="about-image-free">
+            <h2>Donate</h2>
+            <img
+              src="images/donate-toys.webp"
+              alt="a boxfilled with toys. donation is written the box label"
+            ></img>
+          </div>
+        </div>
       </div>
-      <br></br>
       <div className="recent-container">
-        <h1>Check out the recently listed toys</h1>
+        <h3>Check out the recently listed toys</h3>
         {toy.length ? (
           <div className="card-grid recent-card">
             {toy.map((toy) => (
