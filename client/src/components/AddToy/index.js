@@ -4,6 +4,8 @@ import { ADD_TOY } from "../../utils/mutations";
 import { useQuery } from "@apollo/client";
 import Category from "../CategoryId";
 import Condition from "../ConditionId"
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 import "./AddToy.scss";
 
@@ -15,10 +17,12 @@ const AddToy = (data) => {
     name: "",
     description: "",
     image: "",
-    category: { _id: "" },
-    condition: {_id:""},
+    category: "62845eea443df3a54adb8a69",
+    condition: "62839d0b5373703834a7aab1",
   });
-
+  const addNotify = () => {
+    toast("listing added successfully")
+  }
   const [isFree, setIsFree] = useState(true);
 
   const { loading: loading1, data: data1 } = useQuery(QUERY_CATEGORY);
@@ -53,7 +57,6 @@ const AddToy = (data) => {
 
   const submitToyHandler = async (event) => {
     event.preventDefault();
-    // const token = Auth.loggedIn() ? Auth.getToken() : null;
     try {
       const toyMutationResponse = await AddToy({
         variables: {
@@ -67,6 +70,7 @@ const AddToy = (data) => {
           },
         },
       });
+      addNotify()
     } catch (err) {
       console.error(err);
     }
@@ -81,6 +85,16 @@ const AddToy = (data) => {
         <p>Please input the following fields to add a new listing</p>
       </div>
       <form onSubmit={submitToyHandler}>
+      <ToastContainer 
+      position="top-center"
+      autoClose={5000}
+      hideProgressBar={false}
+      newestOnTop={false}
+      closeOnClick
+      rtl={false}
+      pauseOnFocusLoss={false}
+      draggable
+      pauseOnHover={false}/>
         <div className="input-fields">
           <div className="listing-option">
             <input type="radio" name="option" onClick={handleIsFree} /> list for
@@ -88,10 +102,6 @@ const AddToy = (data) => {
             <input type="radio" name="option" onClick={handleIsFree} /> list for
             trade
           </div>
-          {/* <label className="switch">Up for Trade?
-          <input type="checkbox"onChange={handleIsFree}></input>
-          <span class="slider"></span>
-          </label> */}
           <label htmlFor="toyName" className="name-label">
             Name:
           </label>

@@ -1,7 +1,6 @@
 @import "../../variables.scss";
 
 .toy-form {
-  // background-color:$red;
   border: 2px solid $red;
   display: block;
   align-items: center;
@@ -20,7 +19,6 @@
     padding: 1rem;
   }
   input {
-    // box-sizing: border-box;
     width: auto;
     border: 2px solid $biege;
     &:hover {

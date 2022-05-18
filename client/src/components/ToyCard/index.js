@@ -1,13 +1,21 @@
-import React, { useState } from 'react';
-import { useMatch } from 'react-router-dom';
-import { useMutation } from '@apollo/client';
-import { REMOVE_TOY } from '../../utils/mutations';
+
+import React, { useState } from "react";
+import { useMatch } from "react-router-dom";
+import { useMutation } from "@apollo/client";
+import { REMOVE_TOY } from "../../utils/mutations";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 
 import './ToyCard.scss';
 
 export default function ToyCard(card) {
   const { id, name, image, category, isFree, update, onClickRemove } = card;
   const [RemoveToy] = useMutation(REMOVE_TOY);
+
+  const removeNotify = () => {
+    toast("listing removed successfully");
+  };
 
   const removeToyHandler = async (event) => {
     event.preventDefault();
@@ -18,6 +26,7 @@ export default function ToyCard(card) {
           id: value,
         },
       });
+      removeNotify();
     } catch (err) {
       console.log(err);
     }
