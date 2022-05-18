@@ -3,10 +3,11 @@ import { useMutation } from "@apollo/client";
 import { ADD_TOY } from "../../utils/mutations";
 import { useQuery } from "@apollo/client";
 import Category from "../CategoryId";
+import Condition from "../ConditionId"
 
 import "./AddToy.scss";
 
-import { QUERY_CATEGORY } from "../../utils/queries";
+import { QUERY_CATEGORY, QUERY_CONDITION } from "../../utils/queries";
 
 const AddToy = (data) => {
   const [categoryName, setCategoryName] = useState({ category: "" });
@@ -15,6 +16,7 @@ const AddToy = (data) => {
     description: "",
     image: "",
     category: { _id: "" },
+    condition: {_id:""},
   });
 
   const [isFree, setIsFree] = useState(true);
@@ -27,6 +29,16 @@ const AddToy = (data) => {
   } else {
     categoryData = [];
   }
+
+  const {loading:loading2, data:data2}=useQuery(QUERY_CONDITION)
+  let conditionData;
+  if (data2) {
+    conditionData = data2.conditions;
+  } else {
+    conditionData = [];
+  }
+
+  console.log(conditionData)
 
   const handleIsFree = (event) => {
     setIsFree(!isFree);
@@ -51,6 +63,7 @@ const AddToy = (data) => {
             image: toyData.image,
             category: { _id: toyData.category },
             isFree: isFree,
+            condition: {_id:toyData.condition}
           },
         },
       });
@@ -58,7 +71,7 @@ const AddToy = (data) => {
       console.error(err);
     }
 
-    setToyData({ name: "", description: "", image: "", category: { _id: "" } });
+    setToyData({ name: "", description: "", image: "", category: { _id: "" }, condition: { _id:""} });
   };
 
   return (
@@ -120,6 +133,24 @@ const AddToy = (data) => {
                   key={category._id}
                   category={category.name}
                   id={category._id}
+                />
+              ))}
+            </select>
+          </label>
+          <label>
+            Condition:
+            <select
+              className="render-categoryOptions"
+              name="condition"
+              onChange={handleAddToy}
+              value={toyData.condition._id}
+              required
+            >
+              {conditionData.map((condition) => (
+                <Condition
+                  key={condition._id}
+                  condition={condition.name}
+                  id={condition._id}
                 />
               ))}
             </select>

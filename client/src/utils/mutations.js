@@ -35,6 +35,9 @@ export const ADD_TOY = gql`
       category {
         _id
       }
+      condition {
+        _id
+      }
     }
   }
 `;

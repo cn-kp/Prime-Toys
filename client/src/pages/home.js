@@ -11,6 +11,7 @@ export default function Home() {
   const { loading, data, error } = useQuery(QUERY_ALL_TOYS);
   const toys = data?.toys || [];
   const toy = toys.slice(-3);
+  console.log(toy)
 
   return (
     <>

@@ -1,0 +1,12 @@
+@import "../../variables.scss";
+
+option {
+  background-color: $red;
+  color: $dark;
+  border-radius: $border-radius;
+
+  &:hover {
+    background-color: white;
+    color: $red;
+  }
+}
