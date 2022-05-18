@@ -19,6 +19,7 @@ export default function Profile() {
   } else {
     user = [];
   }
+  console.log(user)
 
   return (
     <div className="profile-container">
