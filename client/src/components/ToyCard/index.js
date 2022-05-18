@@ -5,14 +5,16 @@ import { useMutation } from "@apollo/client";
 import { REMOVE_TOY } from "../../utils/mutations";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-
-
+import { NavLink } from 'react-router-dom';
+import Details from '../../pages/toyDetails'
 import './ToyCard.scss';
 
-export default function ToyCard(card) {
-  const { id, name, image, category, isFree, update, onClickRemove } = card;
-  const [RemoveToy] = useMutation(REMOVE_TOY);
+export const ToyContext = React.createContext();
 
+
+export default function ToyCard(card) {
+  const { id, name, image, category, isFree, condition, update, onClickRemove } = card;
+  const [RemoveToy] = useMutation(REMOVE_TOY);
   const removeNotify = () => {
     toast("listing removed successfully");
   };
@@ -51,7 +53,7 @@ export default function ToyCard(card) {
     } else {
       return (
         <div className="card-footer">
-          <button className="btn">Details</button>
+          <button className="btn btn-details"><NavLink to="/details">Details</NavLink></button>
           <button className="btn btn-outline">Trade</button>
         </div>
       );
@@ -79,7 +81,7 @@ export default function ToyCard(card) {
             )}
           </div>
         </div>
-        <ProfileCardButtons />
+        <ProfileCardButtons/>
       </div>
     </div>
   );

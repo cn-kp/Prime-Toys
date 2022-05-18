@@ -6,7 +6,6 @@ import "./listings.scss";
 import ToyCard from "../components/ToyCard";
 
 import { QUERY_ALL_TOYS } from "../utils/queries";
-// import { DangerousChangeType } from "graphql";
 
 export default function Listings() {
   const [activeFilter, setActiveFilter] = useState("all");
@@ -23,7 +22,6 @@ export default function Listings() {
       setToyData(data.toys);
     }
   }, [data]);
-
   const handleFilter = function (event) {
     const { value } = event.target;
     setActiveFilter(value);
@@ -48,7 +46,7 @@ export default function Listings() {
       setToyData(isTradeable);
     }
   };
-
+  console.log(toyData)
   return (
     <>
       <div className="filter-container">
@@ -77,6 +75,7 @@ export default function Listings() {
                 description={toy.description}
                 image={toy.image}
                 category={toy.category.name}
+                condition={toy.condition.name}
               />
             ))}
           </div>

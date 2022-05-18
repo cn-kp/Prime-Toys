@@ -100,6 +100,13 @@
           margin-left: 0.5rem;
         }
       }
+      .btn-details{
+        &:hover {
+          background: $light;
+          color: $red;
+          border: 1px solid $red;
+        }
+      }
 
       .btn-outline {
         background: none;

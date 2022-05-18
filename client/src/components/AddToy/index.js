@@ -17,11 +17,14 @@ const AddToy = (data) => {
     name: "",
     description: "",
     image: "",
-    category: "62845eea443df3a54adb8a69",
-    condition: "62839d0b5373703834a7aab1",
+    category: "",
+    condition: "",
   });
   const addNotify = () => {
     toast("listing added successfully")
+  }
+  const errorNotify = () => {
+    toast("listing error, please select all fields")
   }
   const [isFree, setIsFree] = useState(true);
 
@@ -41,8 +44,6 @@ const AddToy = (data) => {
   } else {
     conditionData = [];
   }
-
-  console.log(conditionData)
 
   const handleIsFree = (event) => {
     setIsFree(!isFree);
@@ -66,16 +67,18 @@ const AddToy = (data) => {
             image: toyData.image,
             category: { _id: toyData.category },
             isFree: isFree,
-            condition: {_id:toyData.condition}
+            condition: {_id: toyData.condition}
           },
         },
       });
       addNotify()
     } catch (err) {
       console.error(err);
+      errorNotify()
+
     }
 
-    setToyData({ name: "", description: "", image: "", category: { _id: "" }, condition: { _id:""} });
+    setToyData({ name: "", description: "", image: "", category: "", condition: "" });
   };
 
   return (
