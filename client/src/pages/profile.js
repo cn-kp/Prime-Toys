@@ -11,20 +11,26 @@ import { QUERY_USER, QUERY_CATEGORY } from "../utils/queries";
 export default function Profile() {
   const { loading, data } = useQuery(QUERY_USER);
   let user;
+  let username;
 
   if (data) {
     user = data.user.listings;
+    username=data.user.username
   } else {
     user = [];
   }
 
   return (
     <div className="profile-container">
+      <div className="greeting">
+        <h1> Welcome back <span>{username}</span>!</h1>
+      </div>
       <div className="add-toy-form-container">
         <AddToy />
       </div>
+
       {user.length ? (
-        <div className="card-grid">
+        <div className="card-grid profile-card-grid">
           {user.map((listing) => (
             <ToyCards
               key={listing._id}

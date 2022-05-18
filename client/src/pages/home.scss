@@ -95,11 +95,17 @@
     color: $green;
   }
   .recent-card {
+    display: grid;
+    margin: 2em;
+    margin: 0 auto;
     justify-content: center;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 25%));
+    grid-template-columns: repeat(auto-fill, minmax(375px, 1fr));
 
     @media (min-width: 768px) {
       justify-content: center;
+      margin: 2em;
+      display: grid;
+      gap: 20px;
       grid-template-columns: repeat(auto-fill, minmax(300px, 25%));
     }
   }
