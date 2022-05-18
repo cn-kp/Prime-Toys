@@ -19,9 +19,13 @@ export default function Profile() {
   const [removeToyState, setRemoveToyState] = useState(false);
   const [listingsState, setListingsState] = useState(user);
 
-  // useEffect(() => {
-  //   setListingsState(listingsState);
-  // }, [listingsState]);
+  const updateListings = () => {
+    if (listingsState) {
+      setListingsState(listingsState);
+    }
+  };
+
+  useEffect(() => {}, []);
 
   const removeToyHandler = async (event) => {
     event.preventDefault();
@@ -34,10 +38,13 @@ export default function Profile() {
       });
 
       console.log(listingsState);
+      console.log(value);
 
       setListingsState(
         listingsState.filter((listing) => listing._id !== value)
       );
+
+      console.log(listingsState);
     } catch (err) {
       console.log(err);
     }
