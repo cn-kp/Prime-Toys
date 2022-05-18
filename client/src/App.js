@@ -21,6 +21,7 @@ import Home from './pages/home';
 import LoginForm from './pages/login';
 import Profile from './pages/profile';
 import Listings from './pages/listings';
+import Details from './pages/toyDetails'
 
 // Components
 import Navbar from './components/Navbar';
@@ -63,6 +64,7 @@ function App() {
                 <Route path="/" element={<Home />} />
                 <Route path="/profile" element={<Profile />} />
                 <Route path="/Listings" element={<Listings />} />
+                <Route path="/details" element={<Details />} />
                 <Route path="/login" element={<LoginForm />} />
               </Routes>
               <Footer />

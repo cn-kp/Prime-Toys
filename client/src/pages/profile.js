@@ -16,6 +16,7 @@ export default function Profile() {
   const user = data?.user.listings || [];
   const username = data?.user.username || '';
 
+  console.log(user)
   const [removeToyState, setRemoveToyState] = useState(false);
   const [listingsState, setListingsState] = useState(user);
 
