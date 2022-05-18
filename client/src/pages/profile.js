@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useQuery, useMutation } from '@apollo/client';
+import { NavLink } from 'react-router-dom';
 
 import './profile.scss';
 
@@ -18,20 +19,9 @@ export default function Profile() {
   const [removeToyState, setRemoveToyState] = useState(false);
   const [listingsState, setListingsState] = useState(user);
 
-  useEffect(() => {
-    if (user) {
-      setListingsState(user);
-    }
-  }, [user]);
-
-  // console.log(user);
-
   // useEffect(() => {
-  //   if (removeToyState) {
-  //     setListingsState(listingsState);
-  //   }
-  //   setRemoveToyState(false);
-  // }, [listingsState, removeToyState]);
+  //   setListingsState(listingsState);
+  // }, [listingsState]);
 
   const removeToyHandler = async (event) => {
     event.preventDefault();
@@ -43,7 +33,11 @@ export default function Profile() {
         },
       });
 
-      setListingsState(user);
+      console.log(listingsState);
+
+      setListingsState(
+        listingsState.filter((listing) => listing._id !== value)
+      );
     } catch (err) {
       console.log(err);
     }
@@ -78,7 +72,9 @@ export default function Profile() {
           <h1 className="list-toys-prompt">
             Listing some toys to get started or
           </h1>
-          <button className="btn view-listings">View Current Listings</button>
+          <button className="btn view-listings">
+            <NavLink to="/listings">View Current Listings</NavLink>
+          </button>
         </div>
       )}
     </div>
