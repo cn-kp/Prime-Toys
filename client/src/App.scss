@@ -1,5 +1,5 @@
-@import "./variables.scss";
-@import "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css";
+@import './variables.scss';
+@import 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css';
 body {
   font-size: 16px;
   font-family: $custom-fonts;
@@ -30,16 +30,16 @@ a {
   grid-template-columns: 1fr;
   grid-template-rows: auto 1fr;
   grid-template-areas:
-    "header"
-    "main";
+    'header'
+    'main';
   height: 100vh;
 
   nav {
-    grid-area: "header";
+    grid-area: 'header';
   }
 
   main {
-    grid-area: "main";
+    grid-area: 'main';
     display: grid;
     grid-template-rows: 1fr auto;
     grid-template-columns: 1fr;
@@ -58,5 +58,31 @@ a {
     display: grid;
     gap: 20px;
     grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+  }
+}
+
+.btn {
+  background: $red;
+  color: $dark;
+  border: none;
+  font-size: 1rem;
+  padding: 0.5em 0.75em;
+  border-radius: $border-radius;
+  cursor: pointer;
+
+  & + .btn {
+    margin-left: 0.5rem;
+  }
+}
+
+.btn-outline {
+  background: none;
+  border: 1px solid $red;
+  color: $red;
+
+  &:hover {
+    background: $red;
+    opacity: 0.9;
+    color: black;
   }
 }
