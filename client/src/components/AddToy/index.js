@@ -24,7 +24,6 @@ const AddToy = (data) => {
 
   if (data1) {
     categoryData = data1.categories;
-    // console.log(categoryData);
   } else {
     categoryData = [];
   }
@@ -71,8 +70,10 @@ const AddToy = (data) => {
       <form onSubmit={submitToyHandler}>
         <div className="input-fields">
           <div className="listing-option">
-            <input type="radio" name="option" onClick={handleIsFree} /> list for free
-            <input type="radio" name="option" onClick={handleIsFree} /> list for trade
+            <input type="radio" name="option" onClick={handleIsFree} /> list for
+            free
+            <input type="radio" name="option" onClick={handleIsFree} /> list for
+            trade
           </div>
           {/* <label className="switch">Up for Trade?
           <input type="checkbox"onChange={handleIsFree}></input>

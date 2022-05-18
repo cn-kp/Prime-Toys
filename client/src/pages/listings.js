@@ -14,39 +14,38 @@ export default function Listings() {
   // const fetchToys = async ()=> {
 
   // }
-  const { loading, data,error } = useQuery(QUERY_ALL_TOYS);
-  const toys  = data?.toys || [];
+  const { loading, data, error } = useQuery(QUERY_ALL_TOYS);
+  const toys = data?.toys || [];
   const [toyData, setToyData] = useState(toys);
-  
-  useEffect(()=>{
-    if (data){
-      setToyData(data.toys)
+
+  useEffect(() => {
+    if (data) {
+      setToyData(data.toys);
     }
-  },[data])
+  }, [data]);
 
-  console.log(toyData);
-
-  // console.log(toyData);
   const handleFilter = function (event) {
     const { value } = event.target;
     setActiveFilter(value);
-    let toy = [];
+
     if (value === "all") {
-      setToyData(toys);
-    } else if (value === "true") {
-      for (let i = 0; i < toys.length; i++) {
-        if (toys[i].isFree === true) {
-          toy.push(toys[i]);
-        }
-        setToyData(toy);
-      }
-    } else if (value === "false") {
-      for (let i = 0; i < toys.length; i++) {
-        if (toys[i].isFree === false) {
-          toy.push(toys[i]);
-        }
-        setToyData(toy);
-      }
+      return setToyData(toys);
+    }
+
+    if (value === "true") {
+      const isFree = toys.filter((toy) => {
+        return !!toy.isFree;
+      });
+
+      setToyData(isFree);
+    }
+
+    if (value === "false") {
+      const isTradeable = toys.filter((toy) => {
+        return !toy.isFree;
+      });
+
+      setToyData(isTradeable);
     }
   };
 
@@ -54,15 +53,17 @@ export default function Listings() {
     <>
       <div className="filter-container">
         <h2>Select a Listing Type</h2>
-        <button value="all" onClick={handleFilter}>
-          All Listing
-        </button>
-        <button value="true" onClick={handleFilter}>
-          Free
-        </button>
-        <button value="false" onClick={handleFilter}>
-          Trade
-        </button>
+        <div className="filter-btn-container">
+          <button value="all" onClick={handleFilter}>
+            All Listing
+          </button>
+          <button value="true" onClick={handleFilter}>
+            Free
+          </button>
+          <button value="false" onClick={handleFilter}>
+            Trade
+          </button>
+        </div>
       </div>
       <section className="wrapper--listings">
         {toyData.length ? (
