@@ -41,6 +41,7 @@ Back to the listings page, users can view the all other listings made by other u
 
 Finally on the homepage, users are presented with a brief overview on how our site works as well as a list of recent listings.
 
+![alt text](./client/public/images/demo.gif)
 
 ## Credits
 [![GitHub contributors](https://badgen.net/github/contributors/cn-kp/Prime-Toys)](https://github.com/cn-kp/Prime-Toys/graphs/contributors)
