@@ -3,16 +3,16 @@ import { useMutation } from "@apollo/client";
 import { ADD_TOY } from "../../utils/mutations";
 import { useQuery } from "@apollo/client";
 import Category from "../CategoryId";
-import Condition from "../ConditionId"
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import Condition from "../ConditionId";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 import "./AddToy.scss";
 
 import { QUERY_CATEGORY, QUERY_CONDITION } from "../../utils/queries";
 
 const AddToy = (data) => {
-  const [categoryName, setCategoryName] = useState({ category: "" });
+  // defining the initial state of our add toy form to be blank
   const [toyData, setToyData] = useState({
     name: "",
     description: "",
@@ -20,14 +20,19 @@ const AddToy = (data) => {
     category: "",
     condition: "",
   });
+
+  // creating user notifications based on the listing attempts
   const addNotify = () => {
-    toast("listing added successfully")
-  }
+    toast("listing added successfully");
+  };
   const errorNotify = () => {
-    toast("listing error, please select all fields")
-  }
+    toast("listing error, please select all fields");
+  };
+
+  // setting the default value for listings of toy to be free if none is specified
   const [isFree, setIsFree] = useState(true);
 
+  // querying the categories for the listing
   const { loading: loading1, data: data1 } = useQuery(QUERY_CATEGORY);
   let categoryData;
 
@@ -37,7 +42,8 @@ const AddToy = (data) => {
     categoryData = [];
   }
 
-  const {loading:loading2, data:data2}=useQuery(QUERY_CONDITION)
+  // querying the conditions for the listing
+  const { loading: loading2, data: data2 } = useQuery(QUERY_CONDITION);
   let conditionData;
   if (data2) {
     conditionData = data2.conditions;
@@ -45,17 +51,21 @@ const AddToy = (data) => {
     conditionData = [];
   }
 
+  // changing the state of the free/trade based on the users section
   const handleIsFree = (event) => {
     setIsFree(!isFree);
   };
 
+  // setting the values on the add toy form to the user's entered values
   const handleAddToy = (event) => {
     const { name, value } = event.target;
     setToyData({ ...toyData, [name]: value });
   };
 
+  // calling our add toy mutation, API call
   const [AddToy] = useMutation(ADD_TOY);
 
+  // using our add toy mutation to make an API call
   const submitToyHandler = async (event) => {
     event.preventDefault();
     try {
@@ -67,18 +77,24 @@ const AddToy = (data) => {
             image: toyData.image,
             category: { _id: toyData.category },
             isFree: isFree,
-            condition: {_id: toyData.condition}
+            condition: { _id: toyData.condition },
           },
         },
       });
-      addNotify()
+      // returning a notification based on if the API was successful
+      addNotify();
     } catch (err) {
       console.error(err);
-      errorNotify()
-
+      errorNotify();
     }
-
-    setToyData({ name: "", description: "", image: "", category: "", condition: "" });
+    // returning the state of our form to be blank
+    setToyData({
+      name: "",
+      description: "",
+      image: "",
+      category: "",
+      condition: "",
+    });
   };
 
   return (
@@ -88,16 +104,17 @@ const AddToy = (data) => {
         <p>Please input the following fields to add a new listing</p>
       </div>
       <form onSubmit={submitToyHandler}>
-      <ToastContainer 
-      position="top-center"
-      autoClose={5000}
-      hideProgressBar={false}
-      newestOnTop={false}
-      closeOnClick
-      rtl={false}
-      pauseOnFocusLoss={false}
-      draggable
-      pauseOnHover={false}/>
+        <ToastContainer
+          position="top-center"
+          autoClose={5000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss={false}
+          draggable
+          pauseOnHover={false}
+        />
         <div className="input-fields">
           <div className="listing-option">
             <input type="radio" name="option" onClick={handleIsFree} /> list for

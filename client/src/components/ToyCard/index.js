@@ -13,12 +13,16 @@ export const ToyContext = React.createContext();
 
 
 export default function ToyCard(card) {
+  // deconstructing the parameters passed to ToyCard 
   const { id, name, image, category, isFree, condition, update, onClickRemove } = card;
+  // calling our remove API
   const [RemoveToy] = useMutation(REMOVE_TOY);
+  // notifies user that a toy was successfully removed
   const removeNotify = () => {
     toast("listing removed successfully");
   };
 
+  // using our API to remove a specific toy from the database
   const removeToyHandler = async (event) => {
     event.preventDefault();
     const { name, value } = event.target;
@@ -35,7 +39,7 @@ export default function ToyCard(card) {
   };
   const ProfileCardButtons = () => {
     const match = useMatch('/profile');
-
+    // specifying the buttons on the toy card based on which page the user on viewing
     if (match) {
       return (
         <div className="card-footer">

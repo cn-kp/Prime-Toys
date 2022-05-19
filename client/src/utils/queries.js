@@ -1,5 +1,5 @@
 import { gql } from "@apollo/client";
-
+// defining our query API
 export const QUERY_ALL_TOYS = gql`
 {
   toys {
