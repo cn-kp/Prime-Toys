@@ -28,6 +28,7 @@ const Navbar = (props) => {
   };
 
   if (isLoggedIn) {
+    //returning specific navbar links based on the current state of the user
     return (
       <nav>
         <div className="navbar">

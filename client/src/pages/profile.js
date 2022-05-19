@@ -11,19 +11,19 @@ import { QUERY_USER, QUERY_CATEGORY } from '../utils/queries';
 import { REMOVE_TOY } from '../utils/mutations';
 
 export default function Profile() {
+
+  // using our API to query our database for users which contain all their listings
   const { loading, data } = useQuery(QUERY_USER);
-  const [RemoveToy] = useMutation(REMOVE_TOY);
   const user = data?.user.listings || [];
   const username = data?.user.username || '';
+  // calling our remove toy API
+  const [RemoveToy] = useMutation(REMOVE_TOY);
 
-  console.log(user)
   const [removeToyState, setRemoveToyState] = useState(false);
+  // setting the listing state of the page with the listings of the user
   const [listingsState, setListingsState] = useState(user);
 
-  // useEffect(() => {
-  //   setListingsState(listingsState);
-  // }, [listingsState]);
-
+  // using our API to remove a toy
   const removeToyHandler = async (event) => {
     event.preventDefault();
     const { name, value } = event.target;
@@ -33,9 +33,7 @@ export default function Profile() {
           id: value,
         },
       });
-
-      console.log(listingsState);
-
+      // updates the listing state of the user to update the page when a toy is removed
       setListingsState(
         listingsState.filter((listing) => listing._id !== value)
       );

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./toyDetails.scss";
+import { NavLink } from "react-router-dom";
 
 export default function Details() {
   return (
@@ -30,7 +31,7 @@ export default function Details() {
         </div>
         <div className="toy-btn-container">
           <button className="btn trade-btn">Trade</button>
-          <button className="btn btn-outline">Go back to Listings</button>
+          <NavLink to="/Listings"><button className="btn btn-outline">Go back to Listings</button></NavLink>
         </div>
       </div>
     </div>

@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { useFormik } from "formik";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 import { useMutation } from "@apollo/client";
 import { LOGIN_USER, ADD_USER } from "../utils/mutations";
@@ -14,12 +16,16 @@ import { render } from "react-dom";
 const LoginForm = (props) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-
+  const unsuccessfullNotify = () => {
+    toast("password or username is incorrect");
+  };
+  // sets the default form of the log in page to present a login form
   const [currentView, setCurrentView] = useState("logIn");
-
+  // calling our mutations to add a login session or a user
   const [login] = useMutation(LOGIN_USER);
   const [addUser] = useMutation(ADD_USER);
 
+  // uses our APU to establish a login session, and redirects user to the profile page when login
   const loginForm = useFormik({
     initialValues: {
       username: "",
@@ -37,10 +43,11 @@ const LoginForm = (props) => {
         navigate("/profile", { replace: true });
       } catch (err) {
         console.error(err);
+        unsuccessfullNotify();
       }
     },
   });
-
+  // uses the add user mutation to create a user
   const registerForm = useFormik({
     initialValues: {
       username: "",
@@ -66,7 +73,7 @@ const LoginForm = (props) => {
   const changeView = (view) => {
     setCurrentView(view);
   };
-
+  // renders the specific form based on login, signup or forgot password
   const renderSwitch = (currentView) => {
     switch (currentView) {
       case "signUp":
@@ -120,6 +127,17 @@ const LoginForm = (props) => {
       case "logIn":
         return (
           <form onSubmit={loginForm.handleSubmit}>
+            <ToastContainer
+              position="top-center"
+              autoClose={5000}
+              hideProgressBar={false}
+              newestOnTop={false}
+              closeOnClick
+              rtl={false}
+              pauseOnFocusLoss={false}
+              draggable
+              pauseOnHover={false}
+            />
             <h2>Welcome Back!</h2>
             <fieldset>
               <legend>Log In</legend>

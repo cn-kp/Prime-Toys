@@ -8,10 +8,10 @@ import { QUERY_ALL_TOYS } from "../utils/queries";
 import "./home.scss";
 
 export default function Home() {
+  // API call to fetch all toys and then splicing it to get the most recent items
   const { loading, data, error } = useQuery(QUERY_ALL_TOYS);
   const toys = data?.toys || [];
   const toy = toys.slice(-3);
-  console.log(toy)
 
   return (
     <>
@@ -24,7 +24,7 @@ export default function Home() {
             <h2 className="subtitle">Trade or donate your toys here</h2>
             <div className="btn-container">
               <button>
-                <NavLink to="/listings">Trade Now</NavLink>
+                <NavLink to="/Listings">Trade Now</NavLink>
               </button>
             </div>
           </div>

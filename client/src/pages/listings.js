@@ -8,20 +8,22 @@ import ToyCard from "../components/ToyCard";
 import { QUERY_ALL_TOYS } from "../utils/queries";
 
 export default function Listings() {
+  // defaults the filter to be all
   const [activeFilter, setActiveFilter] = useState("all");
 
-  // const fetchToys = async ()=> {
-
-  // }
+  // querying our API to fetch all toys on the database
   const { loading, data, error } = useQuery(QUERY_ALL_TOYS);
   const toys = data?.toys || [];
   const [toyData, setToyData] = useState(toys);
 
+  // refreshes the page to ensure all toys are loaded
   useEffect(() => {
     if (data) {
       setToyData(data.toys);
     }
   }, [data]);
+
+  // handler function to update the filtering
   const handleFilter = function (event) {
     const { value } = event.target;
     setActiveFilter(value);
@@ -46,7 +48,6 @@ export default function Listings() {
       setToyData(isTradeable);
     }
   };
-  console.log(toyData)
   return (
     <>
       <div className="filter-container">
