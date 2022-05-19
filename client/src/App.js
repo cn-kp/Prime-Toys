@@ -1,47 +1,47 @@
 // Dependencies
-import React from 'react';
-import { Provider } from 'react-redux';
+import React from "react";
+import { Provider } from "react-redux";
 import {
   ApolloClient,
   InMemoryCache,
   ApolloProvider,
   createHttpLink,
-} from '@apollo/client';
-import { setContext } from '@apollo/client/link/context';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+} from "@apollo/client";
+import { setContext } from "@apollo/client/link/context";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
-import store from './store';
+import store from "./store";
 
 // Styles
-import './reset.scss';
-import './App.scss';
+import "./reset.scss";
+import "./App.scss";
 
 // Pages
-import Home from './pages/home';
-import LoginForm from './pages/login';
-import Profile from './pages/profile';
-import Listings from './pages/listings';
-import Details from './pages/toyDetails'
+import Home from "./pages/home";
+import LoginForm from "./pages/login";
+import Profile from "./pages/profile";
+import Listings from "./pages/listings";
+import Details from "./pages/toyDetails";
 
 // Components
-import Navbar from './components/Navbar';
-import Footer from './components/Footer';
+import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
 // import Layout from "./components/layout/layout"
 
 // Construct our main GraphQL API endpoint
 const httpLink = createHttpLink({
-  uri: 'http://localhost:3001/graphql',
+  uri: "/graphql",
 });
 
 // Construct request middleware that will attach the JWT token to every request as an `authorization` header
 const authLink = setContext((_, { headers }) => {
   // get the authentication token from local storage if it exists
-  const token = localStorage.getItem('id_token');
+  const token = localStorage.getItem("id_token");
   // return the headers to the context so httpLink can read them
   return {
     headers: {
       ...headers,
-      authorization: token ? `Bearer ${token}` : '',
+      authorization: token ? `Bearer ${token}` : "",
     },
   };
 });
